@@ -5,6 +5,7 @@ import com.vetlliga.refugiservice.exceptions.ResourceNotFoundException;
 import com.vetlliga.refugiservice.mappers.AnimalMapper;
 import com.vetlliga.refugiservice.repositories.AnimalRepository;
 import jakarta.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +35,14 @@ public class AnimalService {
   public AnimalDto altaAnimal(AnimalDto animal) {
     log.debug("Alta nuevo animal: {}", animal);
 
+    final var now = LocalDate.now();
+
     final var animalEntity = animalMapper.toEntity(animal);
+
     animalEntity.setId(null);
+    animalEntity.setFechaEntrada(now);
+    animalEntity.setFechaEstado(now);
+    animalEntity.setFechaLocalizacion(now);
     final var response = animalRepository.save(animalEntity);
 
     return animalMapper.toDto(response);
