@@ -40,8 +40,8 @@ public class Animal {
   private TipoAnimal tipo;
   private String nombre;
   private String chip;
-  private Integer edad;
-  private LocalDate entrada;
+  private LocalDate fechaNacimiento;
+  private LocalDate fechaEntrada;
   @Enumerated(EnumType.STRING)
   private SexoAnimal sexo;
   private String raza;
@@ -51,7 +51,9 @@ public class Animal {
   @Enumerated(EnumType.STRING)
   private LocalizacionGato localizacionGato;
   @Enumerated(EnumType.STRING)
+  private LocalDate fechaLocalizacion;
   private EstadoAnimal estado;
+  private LocalDate fechaEstado;
   @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)
   List<Peso> pesos = new ArrayList<>();
   @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)

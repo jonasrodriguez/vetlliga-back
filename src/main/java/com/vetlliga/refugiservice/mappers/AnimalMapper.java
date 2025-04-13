@@ -41,13 +41,15 @@ public class AnimalMapper {
         .tipo(animal.getTipo().getValue())
         .nombre(animal.getNombre())
         .chip(animal.getChip())
-        .edad(animal.getEdad())
-        .entrada(animal.getEntrada())
+        .fechaNacimiento(animal.getFechaNacimiento())
+        .fechaEntrada(animal.getFechaEntrada())
         .sexo(animal.getSexo().getValue())
         .raza(animal.getRaza())
         .origen(animal.getOrigen())
         .localizacion(animal.getTipo().equals(TipoAnimal.PERRO) ? animal.getLocalizacionPerro().getValue() : animal.getLocalizacionGato().getValue())
+        .fechaLocalizacion(animal.getFechaLocalizacion())
         .estado(animal.getEstado().getValue())
+        .fechaEstado(animal.getFechaEstado())
         .desparasitaciones(desparasitacionesDtos)
         .historial(historialDtos)
         .intervenciones(intervencionesDtos)
@@ -69,14 +71,16 @@ public class AnimalMapper {
     animal.setTipo(tipo);
     animal.setNombre(dto.getNombre());
     animal.setChip(dto.getChip());
-    animal.setEdad(dto.getEdad());
-    animal.setEntrada(dto.getEntrada());
+    animal.setFechaNacimiento(dto.getFechaNacimiento());
+    animal.setFechaEntrada(dto.getFechaEntrada());
     animal.setSexo(SexoAnimal.fromValue(dto.getSexo()));
     animal.setRaza(dto.getRaza());
     animal.setOrigen(dto.getOrigen());
     animal.setLocalizacionPerro(locPerro);
     animal.setLocalizacionGato(locGato);
+    animal.setFechaLocalizacion(dto.getFechaLocalizacion());
     animal.setEstado(EstadoAnimal.fromValue(dto.getEstado()));
+    animal.setFechaEstado(dto.getFechaEstado());
 
     animal.setPesos(mapToEntityList(dto.getPesos(), pesoMapper::toEntity, animal));
     animal.setDesparasitaciones(mapToEntityList(dto.getDesparasitaciones(), desparasitacionMapper::toEntity, animal));

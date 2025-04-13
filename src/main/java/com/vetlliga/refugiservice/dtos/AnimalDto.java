@@ -14,13 +14,15 @@ public class AnimalDto {
   private String tipo;
   private String nombre;
   private String chip;
-  private Integer edad;
-  private LocalDate entrada;
+  private LocalDate fechaNacimiento;
+  private LocalDate fechaEntrada;
   private String sexo;
   private String raza;
   private String origen;
   private Integer localizacion;
+  private LocalDate fechaLocalizacion;
   private Integer estado;
+  private LocalDate fechaEstado;
   private List<DesparasitacionDto> desparasitaciones;
   private List<HistorialDto> historial;
   private List<IntervencionDto> intervenciones;
