@@ -50,6 +50,13 @@
 			<artifactId>hibernate-community-dialects</artifactId>
 		</dependency>
 
+		<!-- MariaDB -->
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+
 		<!-- MapStruct core -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>

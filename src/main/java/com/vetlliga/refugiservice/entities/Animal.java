@@ -40,7 +40,7 @@ public class Animal {
   private TipoAnimal tipo;
   private String nombre;
   private String chip;
-  private LocalDate edad;
+  private Integer edad;
   private LocalDate entrada;
   @Enumerated(EnumType.STRING)
   private SexoAnimal sexo;

@@ -14,7 +14,7 @@ public class AnimalDto {
   private String tipo;
   private String nombre;
   private String chip;
-  private LocalDate edad;
+  private Integer edad;
   private LocalDate entrada;
   private String sexo;
   private String raza;
