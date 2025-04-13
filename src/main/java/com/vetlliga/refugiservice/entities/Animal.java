@@ -50,8 +50,8 @@ public class Animal {
   private LocalizacionPerro localizacionPerro;
   @Enumerated(EnumType.STRING)
   private LocalizacionGato localizacionGato;
-  @Enumerated(EnumType.STRING)
   private LocalDate fechaLocalizacion;
+  @Enumerated(EnumType.STRING)
   private EstadoAnimal estado;
   private LocalDate fechaEstado;
   @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)
