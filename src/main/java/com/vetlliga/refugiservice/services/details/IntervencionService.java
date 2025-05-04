@@ -38,7 +38,7 @@ public class IntervencionService {
     final var entity = intervencionRepository.findById(intervencionId).orElseThrow(() ->
         new ResourceNotFoundException("Intervención con id " + intervencionId + " no encontrado"));
 
-    entity.setTipo(dto.getTipo());
+    entity.setDescripcion(dto.getDescripcion());
     entity.setFecha(dto.getFecha());
 
     final var response = intervencionRepository.save(entity);

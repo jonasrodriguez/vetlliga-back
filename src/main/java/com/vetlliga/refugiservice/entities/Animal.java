@@ -46,6 +46,7 @@ public class Animal {
   private SexoAnimal sexo;
   private String raza;
   private String origen;
+  private String enfermedades;
   @Enumerated(EnumType.STRING)
   private LocalizacionPerro localizacionPerro;
   @Enumerated(EnumType.STRING)

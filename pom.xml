@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.vetlliga</groupId>
 	<artifactId>refugiservice</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>refugiservice</name>
 	<description>Backend for Lliga protectora animals i plantes</description>
 	<url/>

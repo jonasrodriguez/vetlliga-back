@@ -40,7 +40,7 @@ public class VacunacionService {
 
     entity.setFecha(dto.getFecha());
     entity.setTipo(dto.getTipo());
-    entity.setMarca(dto.getMarca());
+    entity.setProducto(dto.getProducto());
 
     final var response = vacunacionRepository.save(entity);
     return vacunacionMapper.toDto(response);

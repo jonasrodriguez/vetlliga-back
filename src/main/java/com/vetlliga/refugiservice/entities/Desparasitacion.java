@@ -1,7 +1,10 @@
 package com.vetlliga.refugiservice.entities;
 
+import com.vetlliga.refugiservice.constants.TipoDesparasitacion;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,5 +33,7 @@ public class Desparasitacion {
   @JoinColumn(name = "animal_id", nullable = false)
   private Animal animal;
   private LocalDate fecha;
+  @Enumerated(EnumType.STRING)
+  private TipoDesparasitacion tipo;
   private String producto;
 }

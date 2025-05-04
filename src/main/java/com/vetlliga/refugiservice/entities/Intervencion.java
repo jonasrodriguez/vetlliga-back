@@ -30,5 +30,5 @@ public class Intervencion {
   @JoinColumn(name = "animal_id", nullable = false)
   private Animal animal;
   private LocalDate fecha;
-  private String tipo;
+  private String descripcion;
 }

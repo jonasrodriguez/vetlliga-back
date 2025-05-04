@@ -6,6 +6,7 @@ import com.vetlliga.refugiservice.entities.Desparasitacion;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
@@ -13,6 +14,7 @@ public interface DesparasitacionMapper {
 
   DesparasitacionDto toDto(Desparasitacion entity);
 
+  @Mapping(target = "animal", ignore = true)
   Desparasitacion toEntity(DesparasitacionDto dto, @Context Animal animal);
 
   @AfterMapping

@@ -31,5 +31,5 @@ public class Vacunacion {
   private Animal animal;
   private LocalDate fecha;
   private String tipo;
-  private String marca;
+  private String producto;
 }

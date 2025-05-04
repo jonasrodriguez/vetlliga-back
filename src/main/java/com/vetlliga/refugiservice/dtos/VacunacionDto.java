@@ -11,5 +11,5 @@ public class VacunacionDto {
   private Integer id;
   private LocalDate fecha;
   private String tipo;
-  private String marca;
+  private String producto;
 }

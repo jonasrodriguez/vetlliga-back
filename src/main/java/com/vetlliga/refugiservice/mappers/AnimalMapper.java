@@ -2,16 +2,20 @@ package com.vetlliga.refugiservice.mappers;
 
 import static java.util.Objects.isNull;
 
-import com.vetlliga.refugiservice.constants.EstadoAnimal;
 import com.vetlliga.refugiservice.constants.LocalizacionGato;
 import com.vetlliga.refugiservice.constants.LocalizacionPerro;
-import com.vetlliga.refugiservice.constants.SexoAnimal;
 import com.vetlliga.refugiservice.constants.TipoAnimal;
 import com.vetlliga.refugiservice.dtos.AnimalDto;
+import com.vetlliga.refugiservice.dtos.DesparasitacionDto;
+import com.vetlliga.refugiservice.dtos.TestDto;
+import com.vetlliga.refugiservice.dtos.VacunacionDto;
 import com.vetlliga.refugiservice.entities.Animal;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -35,20 +39,36 @@ public class AnimalMapper {
     final var testDtos = mapToDtoList(animal.getTests(), testMapper::toDto);
     final var vacunasDtos = mapToDtoList(animal.getVacunaciones(), vacunacionMapper::toDto);
 
+    final var fechaUltimaVacunacion = vacunasDtos.stream()
+        .map(VacunacionDto::getFecha)
+        .max(LocalDate::compareTo)
+        .orElse(null);
+
+    final var fechaUltimaDesparasitacion = desparasitacionesDtos.stream()
+        .map(DesparasitacionDto::getFecha)
+        .max(LocalDate::compareTo)
+        .orElse(null);
+
+    final var fechaUltimoTest = testDtos.stream()
+        .map(TestDto::getFecha)
+        .max(LocalDate::compareTo)
+        .orElse(null);
+
     return AnimalDto.builder()
         .id(animal.getId())
         .numeroRegistro(animal.getNumeroRegistro())
-        .tipo(animal.getTipo().getValue())
+        .tipo(animal.getTipo())
         .nombre(animal.getNombre())
         .chip(animal.getChip())
         .fechaNacimiento(animal.getFechaNacimiento())
         .fechaEntrada(animal.getFechaEntrada())
-        .sexo(animal.getSexo().getValue())
+        .sexo(animal.getSexo())
         .raza(animal.getRaza())
         .origen(animal.getOrigen())
-        .localizacion(animal.getTipo().equals(TipoAnimal.PERRO) ? animal.getLocalizacionPerro().getValue() : animal.getLocalizacionGato().getValue())
+        .enfermedades(animal.getEnfermedades())
+        .localizacion(animal.getTipo().equals(TipoAnimal.PERRO) ? animal.getLocalizacionPerro().name() : animal.getLocalizacionGato().name())
         .fechaLocalizacion(animal.getFechaLocalizacion())
-        .estado(animal.getEstado().getValue())
+        .estado(animal.getEstado())
         .fechaEstado(animal.getFechaEstado())
         .desparasitaciones(desparasitacionesDtos)
         .historial(historialDtos)
@@ -56,40 +76,48 @@ public class AnimalMapper {
         .pesos(pesosDtos)
         .vacunaciones(vacunasDtos)
         .tests(testDtos)
+        .fechaUltimaVacunacion(fechaUltimaVacunacion)
+        .fechaUltimaDesparasitacion(fechaUltimaDesparasitacion)
+        .fechaUltimoTest(fechaUltimoTest)
         .build();
   }
 
   public Animal toEntity(AnimalDto dto) {
 
-    final var tipo = TipoAnimal.fromValue(dto.getTipo());
-    final var locPerro = tipo.equals(TipoAnimal.PERRO) ? LocalizacionPerro.fromValue(dto.getLocalizacion()) : null;
-    final var locGato = tipo.equals(TipoAnimal.GATO) ? LocalizacionGato.fromValue(dto.getLocalizacion()) : null;
+    final var locPerro = dto.getTipo().equals(TipoAnimal.PERRO) ? LocalizacionPerro.valueOf(dto.getLocalizacion()) : null;
+    final var locGato = dto.getTipo().equals(TipoAnimal.GATO) ? LocalizacionGato.valueOf(dto.getLocalizacion()) : null;
 
     var animal = new Animal();
     animal.setId(dto.getId());
     animal.setNumeroRegistro(dto.getNumeroRegistro());
-    animal.setTipo(tipo);
+    animal.setTipo(dto.getTipo());
     animal.setNombre(dto.getNombre());
     animal.setChip(dto.getChip());
     animal.setFechaNacimiento(dto.getFechaNacimiento());
     animal.setFechaEntrada(dto.getFechaEntrada());
-    animal.setSexo(SexoAnimal.fromValue(dto.getSexo()));
+    animal.setSexo(dto.getSexo());
     animal.setRaza(dto.getRaza());
     animal.setOrigen(dto.getOrigen());
+    animal.setEnfermedades(dto.getEnfermedades());
     animal.setLocalizacionPerro(locPerro);
     animal.setLocalizacionGato(locGato);
     animal.setFechaLocalizacion(dto.getFechaLocalizacion());
-    animal.setEstado(EstadoAnimal.fromValue(dto.getEstado()));
+    animal.setEstado(dto.getEstado());
     animal.setFechaEstado(dto.getFechaEstado());
 
-    animal.setPesos(mapToEntityList(dto.getPesos(), pesoMapper::toEntity, animal));
-    animal.setDesparasitaciones(mapToEntityList(dto.getDesparasitaciones(), desparasitacionMapper::toEntity, animal));
-    animal.setHistorial(mapToEntityList(dto.getHistorial(), historialMapper::toEntity, animal));
-    animal.setIntervenciones(mapToEntityList(dto.getIntervenciones(), intervencionMapper::toEntity, animal));
-    animal.setTests(mapToEntityList(dto.getTests(), testMapper::toEntity, animal));
-    animal.setVacunaciones(mapToEntityList(dto.getVacunaciones(), vacunacionMapper::toEntity, animal));
-
     return animal;
+  }
+
+  public Animal toEntityComplete(Animal entity, AnimalDto dto) {
+
+    entity.setPesos(mapToEntityList(dto.getPesos(), pesoMapper::toEntity, entity));
+    entity.setDesparasitaciones(mapToEntityList(dto.getDesparasitaciones(), desparasitacionMapper::toEntity, entity));
+    entity.setHistorial(mapToEntityList(dto.getHistorial(), historialMapper::toEntity, entity));
+    entity.setIntervenciones(mapToEntityList(dto.getIntervenciones(), intervencionMapper::toEntity, entity));
+    entity.setTests(mapToEntityList(dto.getTests(), testMapper::toEntity, entity));
+    entity.setVacunaciones(mapToEntityList(dto.getVacunaciones(), vacunacionMapper::toEntity, entity));
+
+    return entity;
   }
 
   private <T, R> List<R> mapToDtoList(List<T> entities, Function<T, R> mapper) {
@@ -107,6 +135,6 @@ public class AnimalMapper {
     }
     return dtos.stream()
         .map(dto -> mapper.apply(dto, animal))
-        .toList();
+        .collect(Collectors.toCollection(ArrayList::new));
   }
 }

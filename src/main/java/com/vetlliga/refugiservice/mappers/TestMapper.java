@@ -7,6 +7,7 @@ import com.vetlliga.refugiservice.entities.Test;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
@@ -14,6 +15,7 @@ public interface TestMapper {
 
   TestDto toDto(Test entity);
 
+  @Mapping(target = "animal", ignore = true)
   Test toEntity(TestDto dto, @Context Animal animal);
 
   @AfterMapping

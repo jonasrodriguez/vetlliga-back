@@ -1,0 +1,721 @@
+[
+    {
+        "numeroRegistro": 100,
+        "tipo": "PERRO",
+        "nombre": "Bobby",
+        "chip": "4911631041",
+        "fechaNacimiento": "2020-12-19",
+        "sexo": "MACHO",
+        "raza": "Labrador",
+        "origen": "Devolución",
+        "enfermedades": "Hipotiroidismo",
+        "localizacion": "NIVEL_2_3",
+        "estado": "ADOPTADO",
+        "desparasitaciones": [
+            {
+                "fecha": "2024-11-25",
+                "tipo": "EXTERNA",
+                "producto": "Drontal"
+            },
+            {
+                "fecha": "2025-01-17",
+                "tipo": "EXTERNA",
+                "producto": "Advocate"
+            }
+        ],
+        "historial": [],
+        "intervenciones": [
+            {
+                "fecha": "2024-12-23",
+                "descripcion": "Extracción de espina en pata delantera"
+            },
+            {
+                "fecha": "2024-11-19",
+                "descripcion": "Esterilización canina"
+            }
+        ],
+        "pesos": [
+            {
+                "fecha": "2025-01-24",
+                "peso": 15.8
+            },
+            {
+                "fecha": "2025-02-16",
+                "peso": 4.5
+            }
+        ],
+        "tests": [
+            {
+                "fecha": "2025-02-03",
+                "tipo": "Parvovirus",
+                "resultado": "Positivo",
+                "lote": "TEST-2024-588"
+            },
+            {
+                "fecha": "2025-02-14",
+                "tipo": "Parvovirus",
+                "resultado": "Negativo",
+                "lote": "TEST-2024-745"
+            }
+        ],
+        "vacunaciones": [
+            {
+                "fecha": "2025-02-05",
+                "tipo": "Moquillo Canino",
+                "producto": "Nobivac DHPPi"
+            },
+            {
+                "fecha": "2024-11-12",
+                "tipo": "Moquillo Canino",
+                "producto": "Purevax"
+            }
+        ]
+    },
+    {
+        "numeroRegistro": 101,
+        "tipo": "PERRO",
+        "nombre": "Max",
+        "chip": "3110954676",
+        "fechaNacimiento": "2022-09-07",
+        "sexo": "HEMBRA",
+        "raza": "Pastor Alemán",
+        "origen": "Devolución",
+        "enfermedades": "Artrosis",
+        "localizacion": "NIVEL_1",
+        "estado": "ADOPTADO",
+        "fechaUltimaVacunacion": "2024-11-16",
+        "fechaUltimaDesparasitacion": "2024-11-25",
+        "fechaUltimoTest": "2024-11-24",
+        "desparasitaciones": [
+            {
+                "fecha": "2025-01-21",
+                "tipo": "EXTERNA",
+                "producto": "Advocate"
+            },
+            {
+                "fecha": "2024-11-03",
+                "tipo": "EXTERNA",
+                "producto": "Advocate"
+            }
+        ],
+        "historial": [],
+        "intervenciones": [
+            {
+                "fecha": "2024-11-28",
+                "descripcion": "Extracción de espina en pata delantera"
+            },
+            {
+                "fecha": "2025-01-17",
+                "descripcion": "Esterilización canina"
+            }
+        ],
+        "pesos": [
+            {
+                "fecha": "2024-11-06",
+                "peso": 11.6
+            },
+            {
+                "fecha": "2024-12-14",
+                "peso": 28.0
+            }
+        ],
+        "tests": [
+            {
+                "fecha": "2024-12-30",
+                "tipo": "Parvovirus",
+                "resultado": "Positivo",
+                "lote": "TEST-2025-837"
+            },
+            {
+                "fecha": "2025-02-24",
+                "tipo": "Leucemia Felina",
+                "resultado": "Negativo",
+                "lote": "TEST-2024-777"
+            }
+        ],
+        "vacunaciones": [
+            {
+                "fecha": "2025-01-30",
+                "tipo": "Triple Felina",
+                "producto": "Rabvac-3"
+            },
+            {
+                "fecha": "2025-01-03",
+                "tipo": "Triple Felina",
+                "producto": "Rabvac-3"
+            }
+        ]
+    },
+    {
+        "numeroRegistro": 102,
+        "tipo": "PERRO",
+        "nombre": "Rocky",
+        "chip": "2727238355",
+        "fechaNacimiento": "2020-02-29",
+        "sexo": "MACHO",
+        "raza": "Golden Retriever",
+        "origen": "Devolución",
+        "enfermedades": "Insuficiencia renal",
+        "localizacion": "NIVEL_2_3",
+        "estado": "ADOPTADO",
+        "desparasitaciones": [
+            {
+                "fecha": "2024-11-25",
+                "tipo": "INTERNA",
+                "producto": "Drontal"
+            },
+            {
+                "fecha": "2025-01-08",
+                "tipo": "INTERNA",
+                "producto": "Advocate"
+            }
+        ],
+        "historial": [],
+        "intervenciones": [
+            {
+                "fecha": "2025-01-05",
+                "descripcion": "Extracción de espina en pata delantera"
+            },
+            {
+                "fecha": "2024-11-11",
+                "descripcion": "Esterilización canina"
+            }
+        ],
+        "pesos": [
+            {
+                "fecha": "2025-01-27",
+                "peso": 15.5
+            },
+            {
+                "fecha": "2025-01-30",
+                "peso": 3.9
+            }
+        ],
+        "tests": [
+            {
+                "fecha": "2024-11-22",
+                "tipo": "Moquillo",
+                "resultado": "Positivo",
+                "lote": "TEST-2024-727"
+            },
+            {
+                "fecha": "2024-11-17",
+                "tipo": "Parvovirus",
+                "resultado": "Positivo",
+                "lote": "TEST-2025-852"
+            }
+        ],
+        "vacunaciones": [
+            {
+                "fecha": "2024-11-06",
+                "tipo": "Moquillo Canino",
+                "producto": "Nobivac DHPPi"
+            },
+            {
+                "fecha": "2024-12-09",
+                "tipo": "Rabia",
+                "producto": "Rabvac-3"
+            }
+        ]
+    },
+    {
+        "numeroRegistro": 103,
+        "tipo": "PERRO",
+        "nombre": "Thor",
+        "chip": "3653093400",
+        "fechaNacimiento": "2021-07-13",
+        "sexo": "HEMBRA",
+        "raza": "Beagle",
+        "origen": "Transferencia",
+        "localizacion": "NIVEL_1",
+        "estado": "ADOPTADO",
+        "desparasitaciones": [
+            {
+                "fecha": "2024-11-07",
+                "tipo": "INTERNA",
+                "producto": "Drontal"
+            },
+            {
+                "fecha": "2024-11-06",
+                "tipo": "INTERNA",
+                "producto": "Drontal"
+            }
+        ],
+        "historial": [],
+        "intervenciones": [
+            {
+                "fecha": "2025-02-15",
+                "descripcion": "Extracción de espina en pata delantera"
+            },
+            {
+                "fecha": "2024-12-12",
+                "descripcion": "Esterilización canina"
+            }
+        ],
+        "pesos": [
+            {
+                "fecha": "2024-12-24",
+                "peso": 15.7
+            },
+            {
+                "fecha": "2024-11-12",
+                "peso": 19.5
+            }
+        ],
+        "tests": [
+            {
+                "fecha": "2024-11-07",
+                "tipo": "Parvovirus",
+                "resultado": "Negativo",
+                "lote": "TEST-2024-872"
+            },
+            {
+                "fecha": "2024-12-30",
+                "tipo": "Moquillo",
+                "resultado": "Positivo",
+                "lote": "TEST-2025-281"
+            }
+        ],
+        "vacunaciones": [
+            {
+                "fecha": "2025-01-29",
+                "tipo": "Moquillo Canino",
+                "producto": "Nobivac DHPPi"
+            },
+            {
+                "fecha": "2024-12-29",
+                "tipo": "Moquillo Canino",
+                "producto": "Purevax"
+            }
+        ]
+    },
+    {
+        "numeroRegistro": 104,
+        "tipo": "PERRO",
+        "nombre": "Simba",
+        "chip": "1361686381",
+        "fechaNacimiento": "2022-05-10",
+        "sexo": "MACHO",
+        "raza": "Boxer",
+        "origen": "Devolución",
+        "localizacion": "NIVEL_1",
+        "estado": "ADOPTADO",
+        "desparasitaciones": [
+            {
+                "fecha": "2024-11-23",
+                "tipo": "EXTERNA",
+                "producto": "Advocate"
+            },
+            {
+                "fecha": "2024-11-11",
+                "tipo": "EXTERNA",
+                "producto": "Frontline Plus"
+            }
+        ],
+        "historial": [],
+        "intervenciones": [
+            {
+                "fecha": "2024-12-01",
+                "descripcion": "Extracción de espina en pata delantera"
+            },
+            {
+                "fecha": "2024-12-24",
+                "descripcion": "Esterilización canina"
+            }
+        ],
+        "pesos": [
+            {
+                "fecha": "2025-02-01",
+                "peso": 21.4
+            },
+            {
+                "fecha": "2025-01-23",
+                "peso": 29.1
+            }
+        ],
+        "tests": [
+            {
+                "fecha": "2024-11-24",
+                "tipo": "Inmunodeficiencia",
+                "resultado": "Negativo",
+                "lote": "TEST-2025-759"
+            },
+            {
+                "fecha": "2024-11-22",
+                "tipo": "Leucemia Felina",
+                "resultado": "Negativo",
+                "lote": "TEST-2024-308"
+            }
+        ],
+        "vacunaciones": [
+            {
+                "fecha": "2024-11-27",
+                "tipo": "Rabia",
+                "producto": "Nobivac DHPPi"
+            },
+            {
+                "fecha": "2024-11-19",
+                "tipo": "Moquillo Canino",
+                "producto": "Nobivac DHPPi"
+            }
+        ]
+    },
+    {
+        "numeroRegistro": 105,
+        "tipo": "GATO",
+        "nombre": "Mia",
+        "chip": "6324105402",
+        "fechaNacimiento": "2022-05-16",
+        "sexo": "HEMBRA",
+        "raza": "Siamés",
+        "origen": "Recogido calle",
+        "localizacion": "HOSPITALIZACION",
+        "estado": "ADOPTADO",
+        "desparasitaciones": [
+            {
+                "fecha": "2024-12-28",
+                "tipo": "EXTERNA",
+                "producto": "Drontal"
+            },
+            {
+                "fecha": "2024-11-19",
+                "tipo": "INTERNA",
+                "producto": "Frontline Plus"
+            }
+        ],
+        "historial": [],
+        "intervenciones": [
+            {
+                "fecha": "2024-12-30",
+                "descripcion": "Extracción de espina en pata delantera"
+            },
+            {
+                "fecha": "2024-12-20",
+                "descripcion": "Esterilización hembra felina"
+            }
+        ],
+        "pesos": [
+            {
+                "fecha": "2025-02-03",
+                "peso": 7.0
+            },
+            {
+                "fecha": "2024-11-28",
+                "peso": 14.5
+            }
+        ],
+        "tests": [
+            {
+                "fecha": "2025-02-17",
+                "tipo": "Parvovirus",
+                "resultado": "Positivo",
+                "lote": "TEST-2025-982"
+            },
+            {
+                "fecha": "2025-02-01",
+                "tipo": "Parvovirus",
+                "resultado": "Negativo",
+                "lote": "TEST-2024-818"
+            }
+        ],
+        "vacunaciones": [
+            {
+                "fecha": "2024-12-10",
+                "tipo": "Triple Felina",
+                "producto": "Rabvac-3"
+            },
+            {
+                "fecha": "2025-01-26",
+                "tipo": "Triple Felina",
+                "producto": "Rabvac-3"
+            }
+        ]
+    },
+    {
+        "numeroRegistro": 106,
+        "tipo": "GATO",
+        "nombre": "Luna",
+        "chip": "3978981148",
+        "fechaNacimiento": "2022-09-07",
+        "sexo": "MACHO",
+        "raza": "Persa",
+        "origen": "Particular",
+        "enfermedades": "Insuficiencia renal",
+        "localizacion": "ANTIGUA_ADAPTACION",
+        "estado": "ADOPTADO",
+        "desparasitaciones": [
+            {
+                "fecha": "2024-11-25",
+                "tipo": "INTERNA",
+                "producto": "Advocate"
+            },
+            {
+                "fecha": "2025-01-08",
+                "tipo": "INTERNA",
+                "producto": "Frontline Plus"
+            }
+        ],
+        "historial": [],
+        "intervenciones": [
+            {
+                "fecha": "2025-01-15",
+                "descripcion": "Extracción de espina en pata delantera"
+            },
+            {
+                "fecha": "2025-01-29",
+                "descripcion": "Esterilización hembra felina"
+            }
+        ],
+        "pesos": [
+            {
+                "fecha": "2025-01-09",
+                "peso": 23.6
+            },
+            {
+                "fecha": "2024-11-26",
+                "peso": 28.4
+            }
+        ],
+        "tests": [
+            {
+                "fecha": "2024-11-13",
+                "tipo": "Parvovirus",
+                "resultado": "Positivo",
+                "lote": "TEST-2024-957"
+            },
+            {
+                "fecha": "2024-11-06",
+                "tipo": "Inmunodeficiencia",
+                "resultado": "Negativo",
+                "lote": "TEST-2025-318"
+            }
+        ],
+        "vacunaciones": [
+            {
+                "fecha": "2024-12-15",
+                "tipo": "Rabia",
+                "producto": "Rabvac-3"
+            },
+            {
+                "fecha": "2024-11-21",
+                "tipo": "Rabia",
+                "producto": "Purevax"
+            }
+        ]
+    },
+    {
+        "numeroRegistro": 107,
+        "tipo": "GATO",
+        "nombre": "Nina",
+        "chip": "8441043594",
+        "fechaNacimiento": "2021-12-12",
+        "sexo": "HEMBRA",
+        "raza": "Maine Coon",
+        "origen": "Transferencia",
+        "localizacion": "COLONIA",
+        "estado": "ADOPTADO",
+        "desparasitaciones": [
+            {
+                "fecha": "2025-01-21",
+                "tipo": "INTERNA",
+                "producto": "Frontline Plus"
+            },
+            {
+                "fecha": "2025-02-12",
+                "tipo": "EXTERNA",
+                "producto": "Drontal"
+            }
+        ],
+        "historial": [],
+        "intervenciones": [
+            {
+                "fecha": "2025-01-04",
+                "descripcion": "Extracción de espina en pata delantera"
+            },
+            {
+                "fecha": "2024-12-08",
+                "descripcion": "Esterilización hembra felina"
+            }
+        ],
+        "pesos": [
+            {
+                "fecha": "2025-01-28",
+                "peso": 32.8
+            },
+            {
+                "fecha": "2025-01-09",
+                "peso": 12.6
+            }
+        ],
+        "tests": [
+            {
+                "fecha": "2025-02-07",
+                "tipo": "Inmunodeficiencia",
+                "resultado": "Positivo",
+                "lote": "TEST-2025-988"
+            },
+            {
+                "fecha": "2024-11-07",
+                "tipo": "Leucemia Felina",
+                "resultado": "Positivo",
+                "lote": "TEST-2025-454"
+            }
+        ],
+        "vacunaciones": [
+            {
+                "fecha": "2025-01-27",
+                "tipo": "Rabia",
+                "producto": "Nobivac DHPPi"
+            },
+            {
+                "fecha": "2024-11-10",
+                "tipo": "Triple Felina",
+                "producto": "Purevax"
+            }
+        ]
+    },
+    {
+        "numeroRegistro": 108,
+        "tipo": "GATO",
+        "nombre": "Cleo",
+        "chip": "6250270193",
+        "fechaNacimiento": "2022-07-27",
+        "sexo": "MACHO",
+        "raza": "Europeo",
+        "origen": "Particular",
+        "enfermedades": "Leucemia felina",
+        "localizacion": "HOSPITALIZACION",
+        "estado": "ADOPTADO",
+        "desparasitaciones": [
+            {
+                "fecha": "2025-01-06",
+                "tipo": "INTERNA",
+                "producto": "Milbemax"
+            },
+            {
+                "fecha": "2024-12-27",
+                "tipo": "EXTERNA",
+                "producto": "Milbemax"
+            }
+        ],
+        "historial": [],
+        "intervenciones": [
+            {
+                "fecha": "2024-12-15",
+                "descripcion": "Extracción de espina en pata delantera"
+            },
+            {
+                "fecha": "2024-12-04",
+                "descripcion": "Esterilización hembra felina"
+            }
+        ],
+        "pesos": [
+            {
+                "fecha": "2024-11-19",
+                "peso": 5.2
+            },
+            {
+                "fecha": "2024-12-24",
+                "peso": 22.7
+            }
+        ],
+        "tests": [
+            {
+                "fecha": "2024-11-05",
+                "tipo": "Inmunodeficiencia",
+                "resultado": "Positivo",
+                "lote": "TEST-2024-824"
+            },
+            {
+                "fecha": "2025-02-23",
+                "tipo": "Leucemia Felina",
+                "resultado": "Positivo",
+                "lote": "TEST-2024-647"
+            }
+        ],
+        "vacunaciones": [
+            {
+                "fecha": "2024-12-20",
+                "tipo": "Triple Felina",
+                "producto": "Nobivac DHPPi"
+            },
+            {
+                "fecha": "2025-01-13",
+                "tipo": "Rabia",
+                "producto": "Rabvac-3"
+            }
+        ]
+    },
+    {
+        "numeroRegistro": 109,
+        "tipo": "GATO",
+        "nombre": "Sombra",
+        "chip": "4313034246",
+        "fechaNacimiento": "2022-09-13",
+        "sexo": "HEMBRA",
+        "raza": "Bengalí",
+        "origen": "Transferencia",
+        "enfermedades": "Leucemia felina",
+        "localizacion": "CUARENTENA_SALIDA",
+        "estado": "ADOPTADO",
+        "desparasitaciones": [
+            {
+                "fecha": "2024-12-15",
+                "tipo": "INTERNA",
+                "producto": "Milbemax"
+            },
+            {
+                "fecha": "2024-12-31",
+                "tipo": "INTERNA",
+                "producto": "Frontline Plus"
+            }
+        ],
+        "historial": [],
+        "intervenciones": [
+            {
+                "fecha": "2025-02-07",
+                "descripcion": "Extracción de espina en pata delantera"
+            },
+            {
+                "fecha": "2025-01-05",
+                "descripcion": "Esterilización hembra felina"
+            }
+        ],
+        "pesos": [
+            {
+                "fecha": "2024-12-26",
+                "peso": 18.0
+            },
+            {
+                "fecha": "2024-11-03",
+                "peso": 8.5
+            }
+        ],
+        "tests": [
+            {
+                "fecha": "2025-01-05",
+                "tipo": "Moquillo",
+                "resultado": "Negativo",
+                "lote": "TEST-2025-684"
+            },
+            {
+                "fecha": "2025-01-15",
+                "tipo": "Inmunodeficiencia",
+                "resultado": "Positivo",
+                "lote": "TEST-2024-226"
+            }
+        ],
+        "vacunaciones": [
+            {
+                "fecha": "2024-12-28",
+                "tipo": "Moquillo Canino",
+                "producto": "Rabvac-3"
+            },
+            {
+                "fecha": "2025-01-08",
+                "tipo": "Moquillo Canino",
+                "producto": "Purevax"
+            }
+        ]
+    }
+]
