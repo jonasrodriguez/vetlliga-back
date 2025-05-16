@@ -21,12 +21,14 @@ public class AnimalDto {
   private LocalDate fechaEntrada;
   private SexoAnimal sexo;
   private String raza;
+  private String color;
   private String origen;
   private String enfermedades;
   private String localizacion;
   private LocalDate fechaLocalizacion;
   private EstadoAnimal estado;
   private LocalDate fechaEstado;
+  private Float ultimoPeso;
   private LocalDate fechaUltimaVacunacion;
   private LocalDate fechaUltimaDesparasitacion;
   private LocalDate fechaUltimoTest;

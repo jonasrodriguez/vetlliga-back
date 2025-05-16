@@ -7,6 +7,7 @@ import com.vetlliga.refugiservice.constants.LocalizacionPerro;
 import com.vetlliga.refugiservice.constants.TipoAnimal;
 import com.vetlliga.refugiservice.dtos.AnimalDto;
 import com.vetlliga.refugiservice.dtos.DesparasitacionDto;
+import com.vetlliga.refugiservice.dtos.PesoDto;
 import com.vetlliga.refugiservice.dtos.TestDto;
 import com.vetlliga.refugiservice.dtos.VacunacionDto;
 import com.vetlliga.refugiservice.entities.Animal;
@@ -54,6 +55,11 @@ public class AnimalMapper {
         .max(LocalDate::compareTo)
         .orElse(null);
 
+    final var ultimoPeso = pesosDtos.stream()
+        .map(PesoDto::getPeso)
+        .max(Float::compareTo)
+        .orElse(null);
+
     return AnimalDto.builder()
         .id(animal.getId())
         .numeroRegistro(animal.getNumeroRegistro())
@@ -64,6 +70,7 @@ public class AnimalMapper {
         .fechaEntrada(animal.getFechaEntrada())
         .sexo(animal.getSexo())
         .raza(animal.getRaza())
+        .color(animal.getColor())
         .origen(animal.getOrigen())
         .enfermedades(animal.getEnfermedades())
         .localizacion(animal.getTipo().equals(TipoAnimal.PERRO) ? animal.getLocalizacionPerro().name() : animal.getLocalizacionGato().name())
@@ -76,6 +83,7 @@ public class AnimalMapper {
         .pesos(pesosDtos)
         .vacunaciones(vacunasDtos)
         .tests(testDtos)
+        .ultimoPeso(ultimoPeso)
         .fechaUltimaVacunacion(fechaUltimaVacunacion)
         .fechaUltimaDesparasitacion(fechaUltimaDesparasitacion)
         .fechaUltimoTest(fechaUltimoTest)
@@ -97,6 +105,7 @@ public class AnimalMapper {
     animal.setFechaEntrada(dto.getFechaEntrada());
     animal.setSexo(dto.getSexo());
     animal.setRaza(dto.getRaza());
+    animal.setColor(dto.getColor());
     animal.setOrigen(dto.getOrigen());
     animal.setEnfermedades(dto.getEnfermedades());
     animal.setLocalizacionPerro(locPerro);

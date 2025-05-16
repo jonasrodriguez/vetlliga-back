@@ -10,7 +10,7 @@
         "origen": "Devolución",
         "enfermedades": "Hipotiroidismo",
         "localizacion": "NIVEL_2_3",
-        "estado": "ADOPTADO",
+        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2024-11-25",
@@ -82,7 +82,7 @@
         "origen": "Devolución",
         "enfermedades": "Artrosis",
         "localizacion": "NIVEL_1",
-        "estado": "ADOPTADO",
+        "estado": "FALLECIDO",
         "fechaUltimaVacunacion": "2024-11-16",
         "fechaUltimaDesparasitacion": "2024-11-25",
         "fechaUltimoTest": "2024-11-24",
@@ -157,7 +157,7 @@
         "origen": "Devolución",
         "enfermedades": "Insuficiencia renal",
         "localizacion": "NIVEL_2_3",
-        "estado": "ADOPTADO",
+        "estado": "EN_ACOGIDA",
         "desparasitaciones": [
             {
                 "fecha": "2024-11-25",
@@ -228,7 +228,7 @@
         "raza": "Beagle",
         "origen": "Transferencia",
         "localizacion": "NIVEL_1",
-        "estado": "ADOPTADO",
+        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2024-11-07",
@@ -299,7 +299,7 @@
         "raza": "Boxer",
         "origen": "Devolución",
         "localizacion": "NIVEL_1",
-        "estado": "ADOPTADO",
+        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2024-11-23",
@@ -370,7 +370,7 @@
         "raza": "Siamés",
         "origen": "Recogido calle",
         "localizacion": "HOSPITALIZACION",
-        "estado": "ADOPTADO",
+        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2024-12-28",
@@ -442,7 +442,7 @@
         "origen": "Particular",
         "enfermedades": "Insuficiencia renal",
         "localizacion": "ANTIGUA_ADAPTACION",
-        "estado": "ADOPTADO",
+        "estado": "RESERVADO",
         "desparasitaciones": [
             {
                 "fecha": "2024-11-25",
@@ -513,7 +513,7 @@
         "raza": "Maine Coon",
         "origen": "Transferencia",
         "localizacion": "COLONIA",
-        "estado": "ADOPTADO",
+        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2025-01-21",
@@ -585,7 +585,7 @@
         "origen": "Particular",
         "enfermedades": "Leucemia felina",
         "localizacion": "HOSPITALIZACION",
-        "estado": "ADOPTADO",
+        "estado": "EN_ACOGIDA",
         "desparasitaciones": [
             {
                 "fecha": "2025-01-06",
@@ -657,7 +657,7 @@
         "origen": "Transferencia",
         "enfermedades": "Leucemia felina",
         "localizacion": "CUARENTENA_SALIDA",
-        "estado": "ADOPTADO",
+        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2024-12-15",

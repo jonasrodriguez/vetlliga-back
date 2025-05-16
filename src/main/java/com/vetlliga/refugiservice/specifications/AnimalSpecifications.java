@@ -21,13 +21,16 @@ import jakarta.persistence.criteria.Subquery;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 
 public class AnimalSpecifications {
 
   public static Specification<Animal> filterByCriteria(ListadoAnimalesCriteria criteria) {
     return (root, query, builder) -> {
-      if (isNull(criteria)) return builder.conjunction();
+      if (isNull(criteria)) {
+        return builder.conjunction();
+      }
 
       List<Predicate> predicates = new ArrayList<>();
 
@@ -39,6 +42,8 @@ public class AnimalSpecifications {
       addUltimaVacuna(criteria, root, query, builder, predicates);
       addUltimaParasito(criteria, root, query, builder, predicates);
       addUltimoTest(criteria, root, query, builder, predicates);
+
+      addSorting(criteria, query, builder, root);
 
       return builder.and(predicates.toArray(Predicate[]::new));
     };
@@ -154,6 +159,17 @@ public class AnimalSpecifications {
       }
       if (nonNull(criteria.getUltimoTestHasta())) {
         predicates.add(builder.lessThanOrEqualTo(subquery, criteria.getUltimoTestHasta()));
+      }
+    }
+  }
+
+  private static void addSorting(ListadoAnimalesCriteria criteria, CriteriaQuery<?> query, CriteriaBuilder builder, Root<Animal> root) {
+    if (nonNull(criteria.getSortBy()) && nonNull(criteria.getSortDirection())) {
+      Sort.Direction direction = Sort.Direction.fromString(criteria.getSortDirection());
+      if (direction == Sort.Direction.ASC) {
+        query.orderBy(builder.asc(root.get(criteria.getSortBy())));
+      } else {
+        query.orderBy(builder.desc(root.get(criteria.getSortBy())));
       }
     }
   }
