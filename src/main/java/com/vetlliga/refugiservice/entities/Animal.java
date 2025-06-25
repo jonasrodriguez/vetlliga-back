@@ -35,10 +35,10 @@ public class Animal {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", updatable = false, nullable = false)
   private Integer id;
-  private Integer numeroRegistro;
   @Enumerated(EnumType.STRING)
   private TipoAnimal tipo;
   private String nombre;
+  private String numeroRegistro;
   private String chip;
   private LocalDate fechaNacimiento;
   private LocalDate fechaEntrada;
@@ -48,6 +48,7 @@ public class Animal {
   private String color;
   private String origen;
   private String enfermedades;
+  private String antecedentes;
   @Enumerated(EnumType.STRING)
   private LocalizacionPerro localizacionPerro;
   @Enumerated(EnumType.STRING)

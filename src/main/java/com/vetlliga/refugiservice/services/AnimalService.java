@@ -1,5 +1,7 @@
 package com.vetlliga.refugiservice.services;
 
+import static java.util.Objects.isNull;
+
 import com.vetlliga.refugiservice.dtos.AnimalDto;
 import com.vetlliga.refugiservice.dtos.ListadoAnimalesCriteria;
 import com.vetlliga.refugiservice.exceptions.ResourceNotFoundException;
@@ -59,12 +61,13 @@ public class AnimalService {
   public AnimalDto actualizarAnimal(Integer id, AnimalDto animal) {
     log.debug("Actualizar animal: {}", animal);
 
-    if (!animalRepository.existsById(id)) {
+    final var existingAnimal = animalRepository.findById(id).orElse(null);
+    if (isNull(existingAnimal)) {
       throw new ResourceNotFoundException("Animal con id " + id + " no encontrado");
     }
 
-    final var animalEntity = animalMapper.toEntity(animal);
-    final var response = animalRepository.save(animalEntity);
+    animalMapper.updateEntityFromDto(animal, existingAnimal);
+    final var response = animalRepository.save(existingAnimal);
 
     return animalMapper.toDto(response);
   }

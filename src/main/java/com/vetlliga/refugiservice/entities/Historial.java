@@ -30,7 +30,5 @@ public class Historial {
   @JoinColumn(name = "animal_id", nullable = false)
   private Animal animal;
   private LocalDate fecha;
-  private String revision;
-  private String diagnostico;
-  private String tratamiento;
+  private String descripcion;
 }

@@ -38,9 +38,7 @@ public class HistorialService {
     final var entity = historialRepository.findById(historialId).orElseThrow(() ->
         new ResourceNotFoundException("Historial con id " + historialId + " no encontrado"));
 
-    entity.setRevision(dto.getRevision());
-    entity.setDiagnostico(dto.getDiagnostico());
-    entity.setTratamiento(dto.getTratamiento());
+    entity.setDescripcion(dto.getDescripcion());
     entity.setFecha(dto.getFecha());
 
     final var response = historialRepository.save(entity);

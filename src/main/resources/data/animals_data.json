@@ -1,6 +1,6 @@
 [
     {
-        "numeroRegistro": 100,
+        "numeroRegistro": "100",
         "tipo": "PERRO",
         "nombre": "Bobby",
         "chip": "4911631041",
@@ -24,7 +24,6 @@
                 "producto": "Advocate"
             }
         ],
-        "historial": [],
         "intervenciones": [
             {
                 "fecha": "2024-12-23",
@@ -70,10 +69,20 @@
                 "tipo": "Moquillo Canino",
                 "producto": "Purevax"
             }
+        ],
+        "historial": [
+            {
+                "fecha": "2025-06-01",
+                "descripcion": "Acude a la visita por vómitos"
+            },
+            {
+                "fecha": "2025-03-15",
+                "descripcion": "Revisión anual, todo en orden"
+            }
         ]
     },
     {
-        "numeroRegistro": 101,
+        "numeroRegistro": "101",
         "tipo": "PERRO",
         "nombre": "Max",
         "chip": "3110954676",
@@ -100,7 +109,16 @@
                 "producto": "Advocate"
             }
         ],
-        "historial": [],
+        "historial": [
+            {
+                "fecha": "2025-06-12",
+                "descripcion": "Consulta por pérdida de apetito"
+            },
+            {
+                "fecha": "2025-05-01",
+                "descripcion": "Revisión post vacuna"
+            }
+        ],
         "intervenciones": [
             {
                 "fecha": "2024-11-28",
@@ -149,7 +167,7 @@
         ]
     },
     {
-        "numeroRegistro": 102,
+        "numeroRegistro": "102",
         "tipo": "PERRO",
         "nombre": "Rocky",
         "chip": "2727238355",
@@ -173,7 +191,16 @@
                 "producto": "Advocate"
             }
         ],
-        "historial": [],
+        "historial": [
+            {
+                "fecha": "2025-06-01",
+                "descripcion": "Acude a la visita por vómitos"
+            },
+            {
+                "fecha": "2025-03-15",
+                "descripcion": "Revisión anual, todo en orden"
+            }
+        ],
         "intervenciones": [
             {
                 "fecha": "2025-01-05",
@@ -222,7 +249,7 @@
         ]
     },
     {
-        "numeroRegistro": 103,
+        "numeroRegistro": "103",
         "tipo": "PERRO",
         "nombre": "Thor",
         "chip": "3653093400",
@@ -245,7 +272,16 @@
                 "producto": "Drontal"
             }
         ],
-        "historial": [],
+        "historial": [
+            {
+                "fecha": "2025-06-01",
+                "descripcion": "Acude a la visita por vómitos"
+            },
+            {
+                "fecha": "2025-03-15",
+                "descripcion": "Revisión anual, todo en orden"
+            }
+        ],
         "intervenciones": [
             {
                 "fecha": "2025-02-15",
@@ -294,7 +330,7 @@
         ]
     },
     {
-        "numeroRegistro": 104,
+        "numeroRegistro": "104",
         "tipo": "PERRO",
         "nombre": "Simba",
         "chip": "1361686381",
@@ -317,7 +353,16 @@
                 "producto": "Frontline Plus"
             }
         ],
-        "historial": [],
+        "historial": [
+            {
+                "fecha": "2025-06-01",
+                "descripcion": "Acude a la visita por vómitos"
+            },
+            {
+                "fecha": "2025-03-15",
+                "descripcion": "Revisión anual, todo en orden"
+            }
+        ],
         "intervenciones": [
             {
                 "fecha": "2024-12-01",
@@ -366,7 +411,7 @@
         ]
     },
     {
-        "numeroRegistro": 105,
+        "numeroRegistro": "105",
         "tipo": "GATO",
         "nombre": "Mia",
         "chip": "6324105402",
@@ -389,7 +434,16 @@
                 "producto": "Frontline Plus"
             }
         ],
-        "historial": [],
+        "historial": [
+            {
+                "fecha": "2025-06-01",
+                "descripcion": "Acude a la visita por vómitos"
+            },
+            {
+                "fecha": "2025-03-15",
+                "descripcion": "Revisión anual, todo en orden"
+            }
+        ],
         "intervenciones": [
             {
                 "fecha": "2024-12-30",
@@ -438,7 +492,7 @@
         ]
     },
     {
-        "numeroRegistro": 106,
+        "numeroRegistro": "106",
         "tipo": "GATO",
         "nombre": "Luna",
         "chip": "3978981148",
@@ -462,7 +516,16 @@
                 "producto": "Frontline Plus"
             }
         ],
-        "historial": [],
+        "historial": [
+            {
+                "fecha": "2025-06-01",
+                "descripcion": "Acude a la visita por vómitos"
+            },
+            {
+                "fecha": "2025-03-15",
+                "descripcion": "Revisión anual, todo en orden"
+            }
+        ],
         "intervenciones": [
             {
                 "fecha": "2025-01-15",
@@ -511,7 +574,7 @@
         ]
     },
     {
-        "numeroRegistro": 107,
+        "numeroRegistro": "107",
         "tipo": "GATO",
         "nombre": "Nina",
         "chip": "8441043594",
@@ -534,7 +597,16 @@
                 "producto": "Drontal"
             }
         ],
-        "historial": [],
+        "historial": [
+            {
+                "fecha": "2025-06-01",
+                "descripcion": "Acude a la visita por vómitos"
+            },
+            {
+                "fecha": "2025-03-15",
+                "descripcion": "Revisión anual, todo en orden"
+            }
+        ],
         "intervenciones": [
             {
                 "fecha": "2025-01-04",
@@ -583,7 +655,7 @@
         ]
     },
     {
-        "numeroRegistro": 108,
+        "numeroRegistro": "108",
         "tipo": "GATO",
         "nombre": "Cleo",
         "chip": "6250270193",
@@ -607,7 +679,16 @@
                 "producto": "Milbemax"
             }
         ],
-        "historial": [],
+        "historial": [
+            {
+                "fecha": "2025-06-01",
+                "descripcion": "Acude a la visita por vómitos"
+            },
+            {
+                "fecha": "2025-03-15",
+                "descripcion": "Revisión anual, todo en orden"
+            }
+        ],
         "intervenciones": [
             {
                 "fecha": "2024-12-15",
@@ -656,7 +737,7 @@
         ]
     },
     {
-        "numeroRegistro": 109,
+        "numeroRegistro": "109",
         "tipo": "GATO",
         "nombre": "Sombra",
         "chip": "4313034246",
@@ -680,7 +761,16 @@
                 "producto": "Frontline Plus"
             }
         ],
-        "historial": [],
+        "historial": [
+            {
+                "fecha": "2025-06-01",
+                "descripcion": "Acude a la visita por vómitos"
+            },
+            {
+                "fecha": "2025-03-15",
+                "descripcion": "Revisión anual, todo en orden"
+            }
+        ],
         "intervenciones": [
             {
                 "fecha": "2025-02-07",

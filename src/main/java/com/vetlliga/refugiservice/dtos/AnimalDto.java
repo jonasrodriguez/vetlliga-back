@@ -13,9 +13,9 @@ import lombok.Data;
 public class AnimalDto {
 
   private int id;
-  private int numeroRegistro;
   private TipoAnimal tipo;
   private String nombre;
+  private String numeroRegistro;
   private String chip;
   private LocalDate fechaNacimiento;
   private LocalDate fechaEntrada;
@@ -24,14 +24,18 @@ public class AnimalDto {
   private String color;
   private String origen;
   private String enfermedades;
+  private String antecedentes;
   private String localizacion;
   private LocalDate fechaLocalizacion;
   private EstadoAnimal estado;
   private LocalDate fechaEstado;
   private Float ultimoPeso;
   private LocalDate fechaUltimaVacunacion;
-  private LocalDate fechaUltimaDesparasitacion;
-  private LocalDate fechaUltimoTest;
+  private String tipoUltimaVacunacion;
+  private LocalDate fechaUltimaDesparasitacionInterna;
+  private String tipoUltimaDesparasitacionInterna;
+  private LocalDate fechaUltimaDesparasitacionExterna;
+  private String tipoUltimaDesparasitacionExterna;
   private List<DesparasitacionDto> desparasitaciones;
   private List<HistorialDto> historial;
   private List<IntervencionDto> intervenciones;

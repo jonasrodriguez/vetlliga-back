@@ -34,6 +34,7 @@ public class AnimalSpecifications {
 
       List<Predicate> predicates = new ArrayList<>();
 
+      addSearch(criteria, root, builder, predicates);
       addTipo(criteria, root, builder, predicates);
       addEstado(criteria, root, builder, predicates);
       addLocalizacion(criteria, root, builder, predicates);
@@ -48,6 +49,21 @@ public class AnimalSpecifications {
       return builder.and(predicates.toArray(Predicate[]::new));
     };
   }
+
+  private static void addSearch(ListadoAnimalesCriteria criteria, Root<Animal> root,
+      CriteriaBuilder builder, List<Predicate> predicates) {
+
+    if (nonNull(criteria.getSearch()) && !criteria.getSearch().isBlank()) {
+      String likePattern = "%" + criteria.getSearch().toLowerCase() + "%";
+
+      Predicate nombrePredicate = builder.like(builder.lower(root.get("nombre")), likePattern);
+      Predicate chipPredicate = builder.like(builder.lower(root.get("chip")), likePattern);
+      Predicate numeroRegistroPredicate = builder.like(builder.lower(root.get("numeroRegistro")), likePattern);
+
+      predicates.add(builder.or(nombrePredicate, chipPredicate, numeroRegistroPredicate));
+    }
+  }
+
 
   private static void addTipo(ListadoAnimalesCriteria criteria, Root<Animal> root,
       CriteriaBuilder builder, List<Predicate> predicates) {

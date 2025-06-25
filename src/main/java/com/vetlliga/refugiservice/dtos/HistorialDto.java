@@ -10,7 +10,5 @@ public class HistorialDto {
 
   private Integer id;
   private LocalDate fecha;
-  private String revision;
-  private String diagnostico;
-  private String tratamiento;
+  private String descripcion;
 }

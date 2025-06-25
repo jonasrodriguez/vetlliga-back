@@ -6,6 +6,8 @@ import lombok.Data;
 @Data
 public class ListadoAnimalesCriteria {
 
+  private String search;
+
   private String tipo;
   private Integer estado;
   private LocalDate fechaEstado;
