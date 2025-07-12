@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,7 +33,7 @@ public class Desparasitacion {
   @ManyToOne
   @JoinColumn(name = "animal_id", nullable = false)
   private Animal animal;
-  private LocalDate fecha;
+  private LocalDateTime fecha;
   @Enumerated(EnumType.STRING)
   private TipoDesparasitacion tipo;
   private String producto;

@@ -1,7 +1,7 @@
 package com.vetlliga.refugiservice.dtos;
 
 import com.vetlliga.refugiservice.constants.TipoDesparasitacion;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,7 +10,7 @@ import lombok.Data;
 public class DesparasitacionDto {
 
   private Integer id;
-  private LocalDate fecha;
+  private LocalDateTime fecha;
   private TipoDesparasitacion tipo;
   private String producto;
 }

@@ -1,6 +1,6 @@
 package com.vetlliga.refugiservice.dtos;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import lombok.Data;
 public class VacunacionDto {
 
   private Integer id;
-  private LocalDate fecha;
+  private LocalDateTime fecha;
   private String tipo;
   private String producto;
 }

@@ -7,6 +7,7 @@ import com.vetlliga.refugiservice.constants.EstadoAnimal;
 import com.vetlliga.refugiservice.constants.LocalizacionGato;
 import com.vetlliga.refugiservice.constants.LocalizacionPerro;
 import com.vetlliga.refugiservice.constants.TipoAnimal;
+import com.vetlliga.refugiservice.constants.TipoDesparasitacion;
 import com.vetlliga.refugiservice.dtos.ListadoAnimalesCriteria;
 import com.vetlliga.refugiservice.entities.Animal;
 import com.vetlliga.refugiservice.entities.Desparasitacion;
@@ -41,7 +42,8 @@ public class AnimalSpecifications {
       addFechaEstado(criteria, root, builder, predicates);
       addFechaLocalizacion(criteria, root, builder, predicates);
       addUltimaVacuna(criteria, root, query, builder, predicates);
-      addUltimaParasito(criteria, root, query, builder, predicates);
+      addUltimaDesparasitacion(criteria.getDesparasitoInternaDesde(), criteria.getDesparasitoInternaHasta(), TipoDesparasitacion.INTERNA, root, query, builder, predicates);
+      addUltimaDesparasitacion(criteria.getDesparasitoExternaDesde(), criteria.getDesparasitoExternaHasta(), TipoDesparasitacion.EXTERNA, root, query, builder, predicates);
       addUltimoTest(criteria, root, query, builder, predicates);
 
       addSorting(criteria, query, builder, root);
@@ -126,36 +128,42 @@ public class AnimalSpecifications {
       CriteriaQuery<?> query, CriteriaBuilder builder,
       List<Predicate> predicates) {
 
-    if (nonNull(criteria.getUltimaVacunaDesde()) || nonNull(criteria.getUltimaVacunaHasta())) {
+    if (nonNull(criteria.getVacunaDesde()) || nonNull(criteria.getVacunaHasta())) {
       Subquery<LocalDate> subquery = query.subquery(LocalDate.class);
       Root<Vacunacion> subRoot = subquery.from(Vacunacion.class);
       subquery.select(builder.greatest(subRoot.<LocalDate>get("fecha")))
           .where(builder.equal(subRoot.get("animal"), root));
 
-      if (nonNull(criteria.getUltimaVacunaDesde())) {
-        predicates.add(builder.greaterThanOrEqualTo(subquery, criteria.getUltimaVacunaDesde()));
+      if (nonNull(criteria.getVacunaDesde())) {
+        predicates.add(builder.greaterThanOrEqualTo(subquery, criteria.getVacunaDesde()));
       }
-      if (nonNull(criteria.getUltimaVacunaHasta())) {
-        predicates.add(builder.lessThanOrEqualTo(subquery, criteria.getUltimaVacunaHasta()));
+      if (nonNull(criteria.getVacunaHasta())) {
+        predicates.add(builder.lessThanOrEqualTo(subquery, criteria.getVacunaHasta()));
       }
     }
   }
 
-  private static void addUltimaParasito(ListadoAnimalesCriteria criteria, Root<Animal> root,
+  private static void addUltimaDesparasitacion(LocalDate ultimaDesparasitacionDesde, LocalDate ultimaDesparasitacionHasta,
+      TipoDesparasitacion tipo,
+      Root<Animal> root,
       CriteriaQuery<?> query, CriteriaBuilder builder,
       List<Predicate> predicates) {
 
-    if (nonNull(criteria.getUltimaParasitoDesde()) || nonNull(criteria.getUltimaParasitoHasta())) {
+    if (nonNull(ultimaDesparasitacionDesde) || nonNull(ultimaDesparasitacionHasta)) {
       Subquery<LocalDate> subquery = query.subquery(LocalDate.class);
       Root<Desparasitacion> subRoot = subquery.from(Desparasitacion.class);
-      subquery.select(builder.greatest(subRoot.<LocalDate>get("fecha")))
-          .where(builder.equal(subRoot.get("animal"), root));
 
-      if (nonNull(criteria.getUltimaParasitoDesde())) {
-        predicates.add(builder.greaterThanOrEqualTo(subquery, criteria.getUltimaParasitoDesde()));
+      Predicate animalMatch = builder.equal(subRoot.get("animal"), root);
+      Predicate tipoInterno = builder.equal(subRoot.get("tipo"), tipo);
+
+      subquery.select(builder.greatest(subRoot.<LocalDate>get("fecha")))
+          .where(builder.and(animalMatch, tipoInterno));
+
+      if (nonNull(ultimaDesparasitacionDesde)) {
+        predicates.add(builder.greaterThanOrEqualTo(subquery, ultimaDesparasitacionDesde));
       }
-      if (nonNull(criteria.getUltimaParasitoHasta())) {
-        predicates.add(builder.lessThanOrEqualTo(subquery, criteria.getUltimaParasitoHasta()));
+      if (nonNull(ultimaDesparasitacionHasta)) {
+        predicates.add(builder.lessThanOrEqualTo(subquery, ultimaDesparasitacionHasta));
       }
     }
   }
@@ -164,17 +172,17 @@ public class AnimalSpecifications {
       CriteriaQuery<?> query, CriteriaBuilder builder,
       List<Predicate> predicates) {
 
-    if (nonNull(criteria.getUltimoTestDesde()) || nonNull(criteria.getUltimoTestHasta())) {
+    if (nonNull(criteria.getTestDesde()) || nonNull(criteria.getTestHasta())) {
       Subquery<LocalDate> subquery = query.subquery(LocalDate.class);
       Root<Test> subRoot = subquery.from(Test.class);
       subquery.select(builder.greatest(subRoot.<LocalDate>get("fecha")))
           .where(builder.equal(subRoot.get("animal"), root));
 
-      if (nonNull(criteria.getUltimoTestDesde())) {
-        predicates.add(builder.greaterThanOrEqualTo(subquery, criteria.getUltimoTestDesde()));
+      if (nonNull(criteria.getTestDesde())) {
+        predicates.add(builder.greaterThanOrEqualTo(subquery, criteria.getTestDesde()));
       }
-      if (nonNull(criteria.getUltimoTestHasta())) {
-        predicates.add(builder.lessThanOrEqualTo(subquery, criteria.getUltimoTestHasta()));
+      if (nonNull(criteria.getTestHasta())) {
+        predicates.add(builder.lessThanOrEqualTo(subquery, criteria.getTestHasta()));
       }
     }
   }

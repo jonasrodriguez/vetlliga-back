@@ -20,5 +20,8 @@ WORKDIR /app
 # Copy the built JAR file from the build stage
 COPY --from=build /app/target/refugiservice-0.0.1.jar app.jar
 
+ENV ADMIN_PASSWORD=changeme
+ENV JWT_SECRET=changeme
+
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]

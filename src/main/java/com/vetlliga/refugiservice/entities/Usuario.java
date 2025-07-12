@@ -1,15 +1,14 @@
 package com.vetlliga.refugiservice.entities;
 
+import com.vetlliga.refugiservice.constants.Rol;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,16 +20,21 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "pesos")
-public class Peso {
+@Table(name = "usuarios")
+public class Usuario {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", updatable = false, nullable = false)
   private Integer id;
-  @ManyToOne
-  @JoinColumn(name = "animal_id", nullable = false)
-  private Animal animal;
-  private LocalDateTime fecha;
-  private Float peso;
+  private String username;
+  private String password;
+  private String email;
+  private String firstName;
+  private String lastName;
+  @Enumerated(EnumType.STRING)
+  private Rol rol;
+  private Boolean enabled = true;
+  private Boolean hidden = false;
+  private LocalDateTime lastLogin;
 }

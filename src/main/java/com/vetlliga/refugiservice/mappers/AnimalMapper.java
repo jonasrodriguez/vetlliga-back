@@ -14,7 +14,7 @@ import com.vetlliga.refugiservice.dtos.PesoDto;
 import com.vetlliga.refugiservice.dtos.TestDto;
 import com.vetlliga.refugiservice.dtos.VacunacionDto;
 import com.vetlliga.refugiservice.entities.Animal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -89,17 +89,17 @@ public class AnimalMapper {
     response.setUltimoPeso(ultimoPeso);
 
     ultimaVacunacion.ifPresent(vacuna -> {
-      response.setFechaUltimaVacunacion(vacuna.getFecha());
+      response.setFechaUltimaVacunacion(vacuna.getFecha().toLocalDate());
       response.setTipoUltimaVacunacion(vacuna.getTipo() + " - " + vacuna.getProducto());
     });
 
     ultimaDesparasitacionInterna.ifPresent(desparasitacion -> {
-      response.setFechaUltimaDesparasitacionInterna(desparasitacion.getFecha());
+      response.setFechaUltimaDesparasitacionInterna(desparasitacion.getFecha().toLocalDate());
       response.setTipoUltimaDesparasitacionInterna(desparasitacion.getProducto());
     });
 
     ultimaDesparasitacionExterna.ifPresent(desparasitacion -> {
-      response.setFechaUltimaDesparasitacionExterna(desparasitacion.getFecha());
+      response.setFechaUltimaDesparasitacionExterna(desparasitacion.getFecha().toLocalDate());
       response.setTipoUltimaDesparasitacionExterna(desparasitacion.getProducto());
     });
     return response;
@@ -124,6 +124,7 @@ public class AnimalMapper {
     animal.setOrigen(dto.getOrigen());
     animal.setEnfermedades(dto.getEnfermedades());
     animal.setAntecedentes(dto.getAntecedentes());
+
     animal.setLocalizacionPerro(locPerro);
     animal.setLocalizacionGato(locGato);
     animal.setFechaLocalizacion(dto.getFechaLocalizacion());
@@ -146,23 +147,21 @@ public class AnimalMapper {
     entity.setColor(dto.getColor());
     entity.setOrigen(dto.getOrigen());
     entity.setEnfermedades(dto.getEnfermedades());
+    entity.setAntecedentes(dto.getAntecedentes());
 
-    if (!entity.getEstado().equals(dto.getEstado())) {
-      entity.setEstado(dto.getEstado());
-      entity.setFechaEstado(LocalDate.now());
-    }
+    entity.setEstado(dto.getEstado());
+    entity.setFechaEstado(dto.getFechaEstado());
+    entity.setFechaLocalizacion(dto.getFechaLocalizacion());
 
     if (dto.getTipo().equals(TipoAnimal.PERRO)) {
       if (!entity.getLocalizacionPerro().equals(LocalizacionPerro.valueOf(dto.getLocalizacion()))) {
         entity.setLocalizacionPerro(LocalizacionPerro.valueOf(dto.getLocalizacion()));
         entity.setLocalizacionGato(null);
-        entity.setFechaLocalizacion(LocalDate.now());
       }
     } else {
       if (!entity.getLocalizacionGato().equals(LocalizacionGato.valueOf(dto.getLocalizacion()))) {
         entity.setLocalizacionGato(LocalizacionGato.valueOf(dto.getLocalizacion()));
         entity.setLocalizacionPerro(null);
-        entity.setFechaLocalizacion(LocalDate.now());
       }
     }
   }
@@ -197,7 +196,7 @@ public class AnimalMapper {
         .collect(Collectors.toCollection(ArrayList::new));
   }
 
-  private <T, D> List<D> mapAndSortByDateDesc(List<T> list, Function<T, D> mapper, Function<D, LocalDate> dateGetter) {
+  private <T, D> List<D> mapAndSortByDateDesc(List<T> list, Function<T, D> mapper, Function<D, LocalDateTime> dateGetter) {
     return list.stream()
         .map(mapper)
         .sorted(Comparator.comparing(dateGetter).reversed())

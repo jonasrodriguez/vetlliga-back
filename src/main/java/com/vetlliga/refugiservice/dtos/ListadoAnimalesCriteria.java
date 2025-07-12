@@ -14,12 +14,14 @@ public class ListadoAnimalesCriteria {
   private Integer localizacion;
   private LocalDate fechaLocalizacion;
 
-  private LocalDate ultimaVacunaDesde;
-  private LocalDate ultimaVacunaHasta;
-  private LocalDate ultimaParasitoDesde;
-  private LocalDate ultimaParasitoHasta;
-  private LocalDate ultimoTestDesde;
-  private LocalDate ultimoTestHasta;
+  private LocalDate vacunaDesde;
+  private LocalDate vacunaHasta;
+  private LocalDate desparasitoInternaDesde;
+  private LocalDate desparasitoInternaHasta;
+  private LocalDate desparasitoExternaDesde;
+  private LocalDate desparasitoExternaHasta;
+  private LocalDate testDesde;
+  private LocalDate testHasta;
 
   private String sortBy;
   private String sortDirection;

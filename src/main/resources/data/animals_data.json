@@ -9,50 +9,50 @@
         "raza": "Labrador",
         "color": "Dorado",
         "origen": "Devolución",
-        "enfermedades": "Hipotiroidismo",
+        "enfermedades": "Hipotiroidismo;Diabetes",
         "localizacion": "NIVEL_2_3",
         "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
-                "fecha": "2024-11-25",
+                "fecha": "2024-11-25T18:07:12",
                 "tipo": "EXTERNA",
                 "producto": "Drontal"
             },
             {
-                "fecha": "2025-01-17",
+                "fecha": "2025-01-17T09:44:55",
                 "tipo": "EXTERNA",
                 "producto": "Advocate"
             }
         ],
         "intervenciones": [
             {
-                "fecha": "2024-12-23",
+                "fecha": "2024-12-23T19:22:41",
                 "descripcion": "Extracción de espina en pata delantera"
             },
             {
-                "fecha": "2024-11-19",
+                "fecha": "2024-11-19T13:11:36",
                 "descripcion": "Esterilización canina"
             }
         ],
         "pesos": [
             {
-                "fecha": "2025-01-24",
+                "fecha": "2025-01-24T10:53:27",
                 "peso": 15.8
             },
             {
-                "fecha": "2025-02-16",
+                "fecha": "2025-02-16T19:36:08",
                 "peso": 4.5
             }
         ],
         "tests": [
             {
-                "fecha": "2025-02-03",
+                "fecha": "2025-02-03T17:18:02",
                 "tipo": "Parvovirus",
                 "resultado": "Positivo",
                 "lote": "TEST-2024-588"
             },
             {
-                "fecha": "2025-02-14",
+                "fecha": "2025-02-14T08:27:44",
                 "tipo": "Parvovirus",
                 "resultado": "Negativo",
                 "lote": "TEST-2024-745"
@@ -60,23 +60,23 @@
         ],
         "vacunaciones": [
             {
-                "fecha": "2025-02-05",
+                "fecha": "2025-02-05T19:01:19",
                 "tipo": "Moquillo Canino",
                 "producto": "Nobivac DHPPi"
             },
             {
-                "fecha": "2024-11-12",
+                "fecha": "2024-11-12T10:12:33",
                 "tipo": "Moquillo Canino",
                 "producto": "Purevax"
             }
         ],
         "historial": [
             {
-                "fecha": "2025-06-01",
+                "fecha": "2025-06-01T19:44:21",
                 "descripcion": "Acude a la visita por vómitos"
             },
             {
-                "fecha": "2025-03-15",
+                "fecha": "2025-03-15T13:55:09",
                 "descripcion": "Revisión anual, todo en orden"
             }
         ]
@@ -91,7 +91,7 @@
         "raza": "Pastor Alemán",
         "color": "Negro",
         "origen": "Devolución",
-        "enfermedades": "Artrosis",
+        "enfermedades": "Artrosis;Displasia de cadera",
         "localizacion": "NIVEL_1",
         "estado": "FALLECIDO",
         "fechaUltimaVacunacion": "2024-11-16",
@@ -99,55 +99,55 @@
         "fechaUltimoTest": "2024-11-24",
         "desparasitaciones": [
             {
-                "fecha": "2025-01-21",
+                "fecha": "2025-01-21T19:12:03",
                 "tipo": "EXTERNA",
                 "producto": "Advocate"
             },
             {
-                "fecha": "2024-11-03",
+                "fecha": "2024-11-03T08:41:29",
                 "tipo": "EXTERNA",
                 "producto": "Advocate"
             }
         ],
         "historial": [
             {
-                "fecha": "2025-06-12",
+                "fecha": "2025-06-12T19:23:18",
                 "descripcion": "Consulta por pérdida de apetito"
             },
             {
-                "fecha": "2025-05-01",
+                "fecha": "2025-05-01T13:09:44",
                 "descripcion": "Revisión post vacuna"
             }
         ],
         "intervenciones": [
             {
-                "fecha": "2024-11-28",
+                "fecha": "2024-11-28T10:18:37",
                 "descripcion": "Extracción de espina en pata delantera"
             },
             {
-                "fecha": "2025-01-17",
+                "fecha": "2025-01-17T19:55:01",
                 "descripcion": "Esterilización canina"
             }
         ],
         "pesos": [
             {
-                "fecha": "2024-11-06",
+                "fecha": "2024-11-06T17:33:12",
                 "peso": 11.6
             },
             {
-                "fecha": "2024-12-14",
+                "fecha": "2024-12-14T19:44:55",
                 "peso": 28.0
             }
         ],
         "tests": [
             {
-                "fecha": "2024-12-30",
+                "fecha": "2024-12-30T08:12:22",
                 "tipo": "Parvovirus",
                 "resultado": "Positivo",
                 "lote": "TEST-2025-837"
             },
             {
-                "fecha": "2025-02-24",
+                "fecha": "2025-02-24T19:01:01",
                 "tipo": "Leucemia Felina",
                 "resultado": "Negativo",
                 "lote": "TEST-2024-777"
@@ -155,12 +155,12 @@
         ],
         "vacunaciones": [
             {
-                "fecha": "2025-01-30",
+                "fecha": "2025-01-30T18:44:33",
                 "tipo": "Triple Felina",
                 "producto": "Rabvac-3"
             },
             {
-                "fecha": "2025-01-03",
+                "fecha": "2025-01-03T09:22:18",
                 "tipo": "Triple Felina",
                 "producto": "Rabvac-3"
             }
@@ -176,60 +176,60 @@
         "raza": "Golden Retriever",
         "color": "Crema",
         "origen": "Devolución",
-        "enfermedades": "Insuficiencia renal",
+        "enfermedades": "Insuficiencia renal;Epilepsia",
         "localizacion": "NIVEL_2_3",
         "estado": "EN_ACOGIDA",
         "desparasitaciones": [
             {
-                "fecha": "2024-11-25",
+                "fecha": "2024-11-25T10:55:44",
                 "tipo": "INTERNA",
                 "producto": "Drontal"
             },
             {
-                "fecha": "2025-01-08",
+                "fecha": "2025-01-08T19:33:12",
                 "tipo": "INTERNA",
                 "producto": "Advocate"
             }
         ],
         "historial": [
             {
-                "fecha": "2025-06-01",
+                "fecha": "2025-06-01T18:22:09",
                 "descripcion": "Acude a la visita por vómitos"
             },
             {
-                "fecha": "2025-03-15",
+                "fecha": "2025-03-15T08:44:55",
                 "descripcion": "Revisión anual, todo en orden"
             }
         ],
         "intervenciones": [
             {
-                "fecha": "2025-01-05",
+                "fecha": "2025-01-05T19:44:55",
                 "descripcion": "Extracción de espina en pata delantera"
             },
             {
-                "fecha": "2024-11-11",
+                "fecha": "2024-11-11T08:12:33",
                 "descripcion": "Esterilización canina"
             }
         ],
         "pesos": [
             {
-                "fecha": "2025-01-27",
+                "fecha": "2025-01-27T19:01:01",
                 "peso": 15.5
             },
             {
-                "fecha": "2025-01-30",
+                "fecha": "2025-01-30T10:12:33",
                 "peso": 3.9
             }
         ],
         "tests": [
             {
-                "fecha": "2024-11-22",
+                "fecha": "2024-11-22T19:44:55",
                 "tipo": "Moquillo",
                 "resultado": "Positivo",
                 "lote": "TEST-2024-727"
             },
             {
-                "fecha": "2024-11-17",
+                "fecha": "2024-11-17T08:27:44",
                 "tipo": "Parvovirus",
                 "resultado": "Positivo",
                 "lote": "TEST-2025-852"
@@ -237,12 +237,12 @@
         ],
         "vacunaciones": [
             {
-                "fecha": "2024-11-06",
+                "fecha": "2024-11-06T19:01:19",
                 "tipo": "Moquillo Canino",
                 "producto": "Nobivac DHPPi"
             },
             {
-                "fecha": "2024-12-09",
+                "fecha": "2024-12-09T09:44:21",
                 "tipo": "Rabia",
                 "producto": "Rabvac-3"
             }
@@ -262,55 +262,55 @@
         "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
-                "fecha": "2024-11-07",
+                "fecha": "2024-11-07T18:44:33",
                 "tipo": "INTERNA",
                 "producto": "Drontal"
             },
             {
-                "fecha": "2024-11-06",
+                "fecha": "2024-11-06T08:12:33",
                 "tipo": "INTERNA",
                 "producto": "Drontal"
             }
         ],
         "historial": [
             {
-                "fecha": "2025-06-01",
+                "fecha": "2025-06-01T19:44:55",
                 "descripcion": "Acude a la visita por vómitos"
             },
             {
-                "fecha": "2025-03-15",
+                "fecha": "2025-03-15T10:12:33",
                 "descripcion": "Revisión anual, todo en orden"
             }
         ],
         "intervenciones": [
             {
-                "fecha": "2025-02-15",
+                "fecha": "2025-02-15T19:01:19",
                 "descripcion": "Extracción de espina en pata delantera"
             },
             {
-                "fecha": "2024-12-12",
+                "fecha": "2024-12-12T08:44:55",
                 "descripcion": "Esterilización canina"
             }
         ],
         "pesos": [
             {
-                "fecha": "2024-12-24",
+                "fecha": "2024-12-24T19:44:55",
                 "peso": 15.7
             },
             {
-                "fecha": "2024-11-12",
+                "fecha": "2024-11-12T08:27:44",
                 "peso": 19.5
             }
         ],
         "tests": [
             {
-                "fecha": "2024-11-07",
+                "fecha": "2024-11-07T19:44:55",
                 "tipo": "Parvovirus",
                 "resultado": "Negativo",
                 "lote": "TEST-2024-872"
             },
             {
-                "fecha": "2024-12-30",
+                "fecha": "2024-12-30T08:12:33",
                 "tipo": "Moquillo",
                 "resultado": "Positivo",
                 "lote": "TEST-2025-281"
@@ -318,12 +318,12 @@
         ],
         "vacunaciones": [
             {
-                "fecha": "2025-01-29",
+                "fecha": "2025-01-29T19:44:55",
                 "tipo": "Moquillo Canino",
                 "producto": "Nobivac DHPPi"
             },
             {
-                "fecha": "2024-12-29",
+                "fecha": "2024-12-29T08:44:55",
                 "tipo": "Moquillo Canino",
                 "producto": "Purevax"
             }
@@ -343,55 +343,55 @@
         "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
-                "fecha": "2024-11-23",
+                "fecha": "2024-11-23T19:44:55",
                 "tipo": "EXTERNA",
                 "producto": "Advocate"
             },
             {
-                "fecha": "2024-11-11",
+                "fecha": "2024-11-11T08:44:55",
                 "tipo": "EXTERNA",
                 "producto": "Frontline Plus"
             }
         ],
         "historial": [
             {
-                "fecha": "2025-06-01",
+                "fecha": "2025-06-01T19:44:55",
                 "descripcion": "Acude a la visita por vómitos"
             },
             {
-                "fecha": "2025-03-15",
+                "fecha": "2025-03-15T08:44:55",
                 "descripcion": "Revisión anual, todo en orden"
             }
         ],
         "intervenciones": [
             {
-                "fecha": "2024-12-01",
+                "fecha": "2024-12-01T19:44:55",
                 "descripcion": "Extracción de espina en pata delantera"
             },
             {
-                "fecha": "2024-12-24",
+                "fecha": "2024-12-24T08:44:55",
                 "descripcion": "Esterilización canina"
             }
         ],
         "pesos": [
             {
-                "fecha": "2025-02-01",
+                "fecha": "2025-02-01T19:44:55",
                 "peso": 21.4
             },
             {
-                "fecha": "2025-01-23",
+                "fecha": "2025-01-23T08:44:55",
                 "peso": 29.1
             }
         ],
         "tests": [
             {
-                "fecha": "2024-11-24",
+                "fecha": "2024-11-24T19:44:55",
                 "tipo": "Inmunodeficiencia",
                 "resultado": "Negativo",
                 "lote": "TEST-2025-759"
             },
             {
-                "fecha": "2024-11-22",
+                "fecha": "2024-11-22T08:44:55",
                 "tipo": "Leucemia Felina",
                 "resultado": "Negativo",
                 "lote": "TEST-2024-308"
@@ -399,12 +399,12 @@
         ],
         "vacunaciones": [
             {
-                "fecha": "2024-11-27",
+                "fecha": "2024-11-27T19:44:55",
                 "tipo": "Rabia",
                 "producto": "Nobivac DHPPi"
             },
             {
-                "fecha": "2024-11-19",
+                "fecha": "2024-11-19T08:44:55",
                 "tipo": "Moquillo Canino",
                 "producto": "Nobivac DHPPi"
             }
@@ -424,55 +424,55 @@
         "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
-                "fecha": "2024-12-28",
+                "fecha": "2024-12-28T19:44:55",
                 "tipo": "EXTERNA",
                 "producto": "Drontal"
             },
             {
-                "fecha": "2024-11-19",
+                "fecha": "2024-11-19T08:44:55",
                 "tipo": "INTERNA",
                 "producto": "Frontline Plus"
             }
         ],
         "historial": [
             {
-                "fecha": "2025-06-01",
+                "fecha": "2025-06-01T19:44:55",
                 "descripcion": "Acude a la visita por vómitos"
             },
             {
-                "fecha": "2025-03-15",
+                "fecha": "2025-03-15T08:44:55",
                 "descripcion": "Revisión anual, todo en orden"
             }
         ],
         "intervenciones": [
             {
-                "fecha": "2024-12-30",
+                "fecha": "2024-12-30T19:44:55",
                 "descripcion": "Extracción de espina en pata delantera"
             },
             {
-                "fecha": "2024-12-20",
+                "fecha": "2024-12-20T08:44:55",
                 "descripcion": "Esterilización hembra felina"
             }
         ],
         "pesos": [
             {
-                "fecha": "2025-02-03",
+                "fecha": "2025-02-03T19:44:55",
                 "peso": 7.0
             },
             {
-                "fecha": "2024-11-28",
+                "fecha": "2024-11-28T08:44:55",
                 "peso": 14.5
             }
         ],
         "tests": [
             {
-                "fecha": "2025-02-17",
+                "fecha": "2025-02-17T19:44:55",
                 "tipo": "Parvovirus",
                 "resultado": "Positivo",
                 "lote": "TEST-2025-982"
             },
             {
-                "fecha": "2025-02-01",
+                "fecha": "2025-02-01T08:44:55",
                 "tipo": "Parvovirus",
                 "resultado": "Negativo",
                 "lote": "TEST-2024-818"
@@ -480,12 +480,12 @@
         ],
         "vacunaciones": [
             {
-                "fecha": "2024-12-10",
+                "fecha": "2024-12-10T19:44:55",
                 "tipo": "Triple Felina",
                 "producto": "Rabvac-3"
             },
             {
-                "fecha": "2025-01-26",
+                "fecha": "2025-01-26T08:44:55",
                 "tipo": "Triple Felina",
                 "producto": "Rabvac-3"
             }
@@ -501,60 +501,60 @@
         "raza": "Persa",
         "color": "Persa",
         "origen": "Particular",
-        "enfermedades": "Insuficiencia renal",
+        "enfermedades": "Enfermedad renal crónica;Hipertiroidismo",
         "localizacion": "ANTIGUA_ADAPTACION",
         "estado": "RESERVADO",
         "desparasitaciones": [
             {
-                "fecha": "2024-11-25",
+                "fecha": "2024-11-25T19:44:55",
                 "tipo": "INTERNA",
                 "producto": "Advocate"
             },
             {
-                "fecha": "2025-01-08",
+                "fecha": "2025-01-08T08:44:55",
                 "tipo": "INTERNA",
                 "producto": "Frontline Plus"
             }
         ],
         "historial": [
             {
-                "fecha": "2025-06-01",
+                "fecha": "2025-06-01T19:44:55",
                 "descripcion": "Acude a la visita por vómitos"
             },
             {
-                "fecha": "2025-03-15",
+                "fecha": "2025-03-15T08:44:55",
                 "descripcion": "Revisión anual, todo en orden"
             }
         ],
         "intervenciones": [
             {
-                "fecha": "2025-01-15",
+                "fecha": "2025-01-15T19:44:55",
                 "descripcion": "Extracción de espina en pata delantera"
             },
             {
-                "fecha": "2025-01-29",
+                "fecha": "2025-01-29T08:44:55",
                 "descripcion": "Esterilización hembra felina"
             }
         ],
         "pesos": [
             {
-                "fecha": "2025-01-09",
+                "fecha": "2025-01-09T19:44:55",
                 "peso": 23.6
             },
             {
-                "fecha": "2024-11-26",
+                "fecha": "2024-11-26T08:44:55",
                 "peso": 28.4
             }
         ],
         "tests": [
             {
-                "fecha": "2024-11-13",
+                "fecha": "2024-11-13T19:44:55",
                 "tipo": "Parvovirus",
                 "resultado": "Positivo",
                 "lote": "TEST-2024-957"
             },
             {
-                "fecha": "2024-11-06",
+                "fecha": "2024-11-06T08:44:55",
                 "tipo": "Inmunodeficiencia",
                 "resultado": "Negativo",
                 "lote": "TEST-2025-318"
@@ -562,12 +562,12 @@
         ],
         "vacunaciones": [
             {
-                "fecha": "2024-12-15",
+                "fecha": "2024-12-15T19:44:55",
                 "tipo": "Rabia",
                 "producto": "Rabvac-3"
             },
             {
-                "fecha": "2024-11-21",
+                "fecha": "2024-11-21T08:44:55",
                 "tipo": "Rabia",
                 "producto": "Purevax"
             }
@@ -587,55 +587,55 @@
         "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
-                "fecha": "2025-01-21",
+                "fecha": "2025-01-21T19:44:55",
                 "tipo": "INTERNA",
                 "producto": "Frontline Plus"
             },
             {
-                "fecha": "2025-02-12",
+                "fecha": "2025-02-12T08:44:55",
                 "tipo": "EXTERNA",
                 "producto": "Drontal"
             }
         ],
         "historial": [
             {
-                "fecha": "2025-06-01",
+                "fecha": "2025-06-01T19:44:55",
                 "descripcion": "Acude a la visita por vómitos"
             },
             {
-                "fecha": "2025-03-15",
+                "fecha": "2025-03-15T08:44:55",
                 "descripcion": "Revisión anual, todo en orden"
             }
         ],
         "intervenciones": [
             {
-                "fecha": "2025-01-04",
+                "fecha": "2025-01-04T19:44:55",
                 "descripcion": "Extracción de espina en pata delantera"
             },
             {
-                "fecha": "2024-12-08",
+                "fecha": "2024-12-08T08:44:55",
                 "descripcion": "Esterilización hembra felina"
             }
         ],
         "pesos": [
             {
-                "fecha": "2025-01-28",
+                "fecha": "2025-01-28T19:44:55",
                 "peso": 32.8
             },
             {
-                "fecha": "2025-01-09",
+                "fecha": "2025-01-09T08:44:55",
                 "peso": 12.6
             }
         ],
         "tests": [
             {
-                "fecha": "2025-02-07",
+                "fecha": "2025-02-07T19:44:55",
                 "tipo": "Inmunodeficiencia",
                 "resultado": "Positivo",
                 "lote": "TEST-2025-988"
             },
             {
-                "fecha": "2024-11-07",
+                "fecha": "2024-11-07T08:44:55",
                 "tipo": "Leucemia Felina",
                 "resultado": "Positivo",
                 "lote": "TEST-2025-454"
@@ -643,12 +643,12 @@
         ],
         "vacunaciones": [
             {
-                "fecha": "2025-01-27",
+                "fecha": "2025-01-27T19:44:55",
                 "tipo": "Rabia",
                 "producto": "Nobivac DHPPi"
             },
             {
-                "fecha": "2024-11-10",
+                "fecha": "2024-11-10T08:44:55",
                 "tipo": "Triple Felina",
                 "producto": "Purevax"
             }
@@ -664,60 +664,60 @@
         "raza": "Europeo",
         "color": "Gris",
         "origen": "Particular",
-        "enfermedades": "Leucemia felina",
+        "enfermedades": "Leucemia felina;Asma",
         "localizacion": "HOSPITALIZACION",
         "estado": "EN_ACOGIDA",
         "desparasitaciones": [
             {
-                "fecha": "2025-01-06",
+                "fecha": "2025-01-06T19:44:55",
                 "tipo": "INTERNA",
                 "producto": "Milbemax"
             },
             {
-                "fecha": "2024-12-27",
+                "fecha": "2024-12-27T08:44:55",
                 "tipo": "EXTERNA",
                 "producto": "Milbemax"
             }
         ],
         "historial": [
             {
-                "fecha": "2025-06-01",
+                "fecha": "2025-06-01T19:44:55",
                 "descripcion": "Acude a la visita por vómitos"
             },
             {
-                "fecha": "2025-03-15",
+                "fecha": "2025-03-15T08:44:55",
                 "descripcion": "Revisión anual, todo en orden"
             }
         ],
         "intervenciones": [
             {
-                "fecha": "2024-12-15",
+                "fecha": "2024-12-15T19:44:55",
                 "descripcion": "Extracción de espina en pata delantera"
             },
             {
-                "fecha": "2024-12-04",
+                "fecha": "2024-12-04T08:44:55",
                 "descripcion": "Esterilización hembra felina"
             }
         ],
         "pesos": [
             {
-                "fecha": "2024-11-19",
+                "fecha": "2024-11-19T19:44:55",
                 "peso": 5.2
             },
             {
-                "fecha": "2024-12-24",
+                "fecha": "2024-12-24T08:44:55",
                 "peso": 22.7
             }
         ],
         "tests": [
             {
-                "fecha": "2024-11-05",
+                "fecha": "2024-11-05T19:44:55",
                 "tipo": "Inmunodeficiencia",
                 "resultado": "Positivo",
                 "lote": "TEST-2024-824"
             },
             {
-                "fecha": "2025-02-23",
+                "fecha": "2025-02-23T08:44:55",
                 "tipo": "Leucemia Felina",
                 "resultado": "Positivo",
                 "lote": "TEST-2024-647"
@@ -725,12 +725,12 @@
         ],
         "vacunaciones": [
             {
-                "fecha": "2024-12-20",
+                "fecha": "2024-12-20T19:44:55",
                 "tipo": "Triple Felina",
                 "producto": "Nobivac DHPPi"
             },
             {
-                "fecha": "2025-01-13",
+                "fecha": "2025-01-13T08:44:55",
                 "tipo": "Rabia",
                 "producto": "Rabvac-3"
             }
@@ -751,55 +751,55 @@
         "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
-                "fecha": "2024-12-15",
+                "fecha": "2024-12-15T19:44:55",
                 "tipo": "INTERNA",
                 "producto": "Milbemax"
             },
             {
-                "fecha": "2024-12-31",
+                "fecha": "2024-12-31T08:44:55",
                 "tipo": "INTERNA",
                 "producto": "Frontline Plus"
             }
         ],
         "historial": [
             {
-                "fecha": "2025-06-01",
+                "fecha": "2025-06-01T19:44:55",
                 "descripcion": "Acude a la visita por vómitos"
             },
             {
-                "fecha": "2025-03-15",
+                "fecha": "2025-03-15T08:44:55",
                 "descripcion": "Revisión anual, todo en orden"
             }
         ],
         "intervenciones": [
             {
-                "fecha": "2025-02-07",
+                "fecha": "2025-02-07T19:44:55",
                 "descripcion": "Extracción de espina en pata delantera"
             },
             {
-                "fecha": "2025-01-05",
+                "fecha": "2025-01-05T08:44:55",
                 "descripcion": "Esterilización hembra felina"
             }
         ],
         "pesos": [
             {
-                "fecha": "2024-12-26",
+                "fecha": "2024-12-26T19:44:55",
                 "peso": 18.0
             },
             {
-                "fecha": "2024-11-03",
+                "fecha": "2024-11-03T08:44:55",
                 "peso": 8.5
             }
         ],
         "tests": [
             {
-                "fecha": "2025-01-05",
+                "fecha": "2025-01-05T19:44:55",
                 "tipo": "Moquillo",
                 "resultado": "Negativo",
                 "lote": "TEST-2025-684"
             },
             {
-                "fecha": "2025-01-15",
+                "fecha": "2025-01-15T08:44:55",
                 "tipo": "Inmunodeficiencia",
                 "resultado": "Positivo",
                 "lote": "TEST-2024-226"
@@ -807,12 +807,12 @@
         ],
         "vacunaciones": [
             {
-                "fecha": "2024-12-28",
+                "fecha": "2024-12-28T19:44:55",
                 "tipo": "Moquillo Canino",
                 "producto": "Rabvac-3"
             },
             {
-                "fecha": "2025-01-08",
+                "fecha": "2025-01-08T08:44:55",
                 "tipo": "Moquillo Canino",
                 "producto": "Purevax"
             }

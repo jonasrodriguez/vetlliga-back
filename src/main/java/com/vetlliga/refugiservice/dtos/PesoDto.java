@@ -1,8 +1,6 @@
 package com.vetlliga.refugiservice.dtos;
 
-import com.vetlliga.refugiservice.entities.Animal;
-import com.vetlliga.refugiservice.entities.Peso;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,6 +9,6 @@ import lombok.Data;
 public class PesoDto {
 
   private Integer id;
-  private LocalDate fecha;
+  private LocalDateTime fecha;
   private Float peso;
 }
