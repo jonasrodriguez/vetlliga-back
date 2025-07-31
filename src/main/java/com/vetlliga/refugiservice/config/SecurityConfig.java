@@ -18,6 +18,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @AllArgsConstructor
 public class SecurityConfig {
 
+  private static final String[] NO_AUTH_ENDPOINTS = {
+      "/api/auth/login",
+      "/actuator/health",
+      "/actuator/info"
+  };
+
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
   @Bean
@@ -32,7 +38,7 @@ public class SecurityConfig {
         .csrf(AbstractHttpConfigurer::disable)
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/api/auth/login").permitAll()
+            .requestMatchers(NO_AUTH_ENDPOINTS).permitAll()
             .anyRequest().authenticated()
         )
         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

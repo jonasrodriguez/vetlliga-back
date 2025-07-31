@@ -11,6 +11,9 @@ COPY src ./src
 # Build the application
 RUN mvn clean package -DskipTests
 
+# Rename the JAR file to a consistent name
+RUN cp target/refugiservice-*.jar app.jar
+
 # Stage 2: Run the application
 FROM eclipse-temurin:21-jdk-alpine
 
@@ -18,7 +21,7 @@ FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
 # Copy the built JAR file from the build stage
-COPY --from=build /app/target/refugiservice-0.0.1.jar app.jar
+COPY --from=build /app/app.jar app.jar
 
 ENV ADMIN_PASSWORD=changeme
 ENV JWT_SECRET=changeme
