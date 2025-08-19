@@ -12,6 +12,7 @@ class AnimalMapperTest {
   private PesoMapper pesoMapper = mock(PesoMapper.class);
   private TestMapper testMapper = mock(TestMapper.class);
   private VacunacionMapper vacunacionMapper = mock(VacunacionMapper.class);
+  private DocumentosMapper documentosMapper = mock(DocumentosMapper.class);
 
   private AnimalMapper mapper;
 
@@ -23,7 +24,8 @@ class AnimalMapperTest {
         intervencionMapper,
         pesoMapper,
         testMapper,
-        vacunacionMapper
+        vacunacionMapper,
+        documentosMapper
     );
   }
 }
