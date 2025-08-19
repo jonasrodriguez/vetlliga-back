@@ -8,6 +8,7 @@ import com.vetlliga.refugiservice.constants.TipoAnimal;
 import com.vetlliga.refugiservice.constants.TipoDesparasitacion;
 import com.vetlliga.refugiservice.dtos.AnimalDto;
 import com.vetlliga.refugiservice.dtos.DesparasitacionDto;
+import com.vetlliga.refugiservice.dtos.DocumentoDto;
 import com.vetlliga.refugiservice.dtos.HistorialDto;
 import com.vetlliga.refugiservice.dtos.IntervencionDto;
 import com.vetlliga.refugiservice.dtos.PesoDto;
@@ -34,6 +35,7 @@ public class AnimalMapper {
   private final PesoMapper pesoMapper;
   private final TestMapper testMapper;
   private final VacunacionMapper vacunacionMapper;
+  private final DocumentosMapper documentosMapper;
 
   public AnimalDto toDto(Animal animal) {
 
@@ -43,6 +45,7 @@ public class AnimalMapper {
     final var vacunasDtos = mapAndSortByDateDesc(animal.getVacunaciones(), vacunacionMapper::toDto, VacunacionDto::getFecha);
     final var intervencionesDtos = mapAndSortByDateDesc(animal.getIntervenciones(), intervencionMapper::toDto, IntervencionDto::getFecha);
     final var historialDtos = mapAndSortByDateDesc(animal.getHistorial(), historialMapper::toDto, HistorialDto::getFecha);
+    final var documentosDtos = mapAndSortByDateDesc(animal.getDocumentos(), documentosMapper::toDto, DocumentoDto::getFecha);
 
     final var ultimaVacunacion = vacunasDtos.stream()
         .max(Comparator.comparing(VacunacionDto::getFecha));
@@ -84,6 +87,7 @@ public class AnimalMapper {
         .pesos(pesosDtos)
         .vacunaciones(vacunasDtos)
         .tests(testDtos)
+        .documentos(documentosDtos)
         .build();
 
     response.setUltimoPeso(ultimoPeso);
@@ -174,6 +178,7 @@ public class AnimalMapper {
     entity.setIntervenciones(mapToEntityList(dto.getIntervenciones(), intervencionMapper::toEntity, entity));
     entity.setTests(mapToEntityList(dto.getTests(), testMapper::toEntity, entity));
     entity.setVacunaciones(mapToEntityList(dto.getVacunaciones(), vacunacionMapper::toEntity, entity));
+    entity.setDocumentos(mapToEntityList(dto.getDocumentos(), documentosMapper::toEntity, entity));
 
     return entity;
   }

@@ -69,4 +69,6 @@ public class Animal {
   List<Intervencion> intervenciones = new ArrayList<>();
   @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)
   List<Historial> historial = new ArrayList<>();
+  @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)
+  List<Documento> documentos = new ArrayList<>();
 }

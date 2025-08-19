@@ -42,4 +42,5 @@ public class AnimalDto {
   private List<PesoDto> pesos;
   private List<TestDto> tests;
   private List<VacunacionDto> vacunaciones;
+  private List<DocumentoDto> documentos;
 }

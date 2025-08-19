@@ -1,0 +1,15 @@
+package com.vetlliga.refugiservice.dtos;
+
+import java.time.LocalDateTime;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class DocumentoDto {
+
+  private Integer id;
+  private LocalDateTime fecha;
+  private String nombre;
+  private String ruta;
+}
