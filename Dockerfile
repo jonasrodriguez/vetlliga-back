@@ -25,6 +25,7 @@ COPY --from=build /app/app.jar app.jar
 
 ENV ADMIN_PASSWORD=changeme
 ENV JWT_SECRET=changeme
+ENV UPLOAD_DIR=/data
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
