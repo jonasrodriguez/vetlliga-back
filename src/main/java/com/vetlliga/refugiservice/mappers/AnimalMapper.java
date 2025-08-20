@@ -178,7 +178,7 @@ public class AnimalMapper {
     entity.setIntervenciones(mapToEntityList(dto.getIntervenciones(), intervencionMapper::toEntity, entity));
     entity.setTests(mapToEntityList(dto.getTests(), testMapper::toEntity, entity));
     entity.setVacunaciones(mapToEntityList(dto.getVacunaciones(), vacunacionMapper::toEntity, entity));
-    entity.setDocumentos(mapToEntityList(dto.getDocumentos(), documentosMapper::toEntity, entity));
+    //entity.setDocumentos(mapToEntityList(dto.getDocumentos(), documentosMapper::toEntity, entity));
 
     return entity;
   }

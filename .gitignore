@@ -45,3 +45,4 @@ out/
 ## Miscellaneous
 ##############################
 *.log
+/vetlliga_data
