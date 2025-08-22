@@ -31,7 +31,7 @@ public class FileService {
   private final DocumentoRepository documentoRepository;
   private final DocumentosMapper documentosMapper;
 
-  public DocumentoDto storeFile(Integer id, MultipartFile file) throws IOException {
+  public DocumentoDto storeFile(Integer id, MultipartFile file, String descripcion) throws IOException {
 
     log.debug("Nuevo documento: {} para animal: {}", file.getOriginalFilename(), id);
 
@@ -61,6 +61,7 @@ public class FileService {
     documento.setFecha(LocalDateTime.now());
     documento.setNombre(file.getOriginalFilename());
     documento.setRuta(filePath.toString());
+    documento.setDescripcion(descripcion);
     documento.setAnimal(animalEntity);
     documentoRepository.save(documento);
 

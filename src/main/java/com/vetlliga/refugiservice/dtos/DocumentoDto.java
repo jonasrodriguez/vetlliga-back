@@ -11,5 +11,6 @@ public class DocumentoDto {
   private Integer id;
   private LocalDateTime fecha;
   private String nombre;
+  private String descripcion;
   private String ruta;
 }

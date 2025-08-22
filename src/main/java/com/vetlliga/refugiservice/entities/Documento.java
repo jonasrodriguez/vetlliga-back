@@ -31,5 +31,6 @@ public class Documento {
   private Animal animal;
   private LocalDateTime fecha;
   private String nombre;
+  private String descripcion;
   private String ruta;
 }

@@ -26,9 +26,9 @@ public class FileController {
   private final FileService fileService;
 
   @PostMapping("/file")
-  public ResponseEntity<DocumentoDto> uploadFile(@PathVariable Integer id, @RequestParam("file") MultipartFile file) {
+  public ResponseEntity<DocumentoDto> uploadFile(@PathVariable Integer id, @RequestParam("file") MultipartFile file, @RequestParam("descripcion") String descripcion) {
     try {
-      return ResponseEntity.ok(fileService.storeFile(id, file));
+      return ResponseEntity.ok(fileService.storeFile(id, file, descripcion));
     } catch (IOException e) {
       return ResponseEntity.status(500).body(null);
     }
