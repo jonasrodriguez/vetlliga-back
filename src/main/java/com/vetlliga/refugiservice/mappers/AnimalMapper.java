@@ -88,6 +88,10 @@ public class AnimalMapper {
         .vacunaciones(vacunasDtos)
         .tests(testDtos)
         .documentos(documentosDtos)
+        .fechaCreacion(animal.getFechaCreacion())
+        .fechaModificacion(animal.getFechaModificacion())
+        .usuarioCreacion(animal.getUsuarioCreacion())
+        .usuarioModificacion(animal.getUsuarioModificacion())
         .build();
 
     response.setUltimoPeso(ultimoPeso);

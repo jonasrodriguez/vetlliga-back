@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class AnimalController {
   private final ObjectMapper objectMapper;
 
   @GetMapping
-  public ResponseEntity<List<AnimalDto>> listadoAnimales(ListadoAnimalesCriteria criteria) {
+  public ResponseEntity<Page<AnimalDto>> listadoAnimales(ListadoAnimalesCriteria criteria) {
 
     final var sort = Sort.by(
         Sort.Direction.fromString(criteria.getSortDirection() != null ? criteria.getSortDirection() : "asc"),

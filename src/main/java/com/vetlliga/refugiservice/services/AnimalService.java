@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +26,11 @@ public class AnimalService {
   private final AnimalRepository animalRepository;
   private final AnimalMapper animalMapper;
 
-  public List<AnimalDto> listAnimals(ListadoAnimalesCriteria criteria, Pageable pageable) {
+  public Page<AnimalDto> listAnimals(ListadoAnimalesCriteria criteria, Pageable pageable) {
     final var specification = AnimalSpecifications.filterByCriteria(criteria);
 
-    return animalRepository.findAll(specification).stream()
-        .map(animalMapper::toDto)
-        .toList();
+    var page = animalRepository.findAll(specification, pageable);
+    return page.map(animalMapper::toDto);
   }
 
   public AnimalDto getAnimal(Integer id) {
