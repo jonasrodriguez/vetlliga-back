@@ -32,13 +32,16 @@ services:
       - app-network
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+    image: lscr.io/linuxserver/phpmyadmin:latest
     container_name: phpmyadmin
     restart: always
     environment:
-      PMA_HOST: mariadb
-      PMA_USER: user
-      PMA_PASSWORD: password
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - PMA_HOST=mariadb
+      - PMA_USER=user
+      - PMA_PASSWORD=password
     ports:
       - "8008:80"
     networks:
