@@ -48,6 +48,9 @@ public class AnimalSpecifications {
 
       addSorting(criteria, query, builder, root);
 
+      // Add "activo = true" filter
+      predicates.add(builder.isTrue(root.get("activo")));
+
       return builder.and(predicates.toArray(Predicate[]::new));
     };
   }
