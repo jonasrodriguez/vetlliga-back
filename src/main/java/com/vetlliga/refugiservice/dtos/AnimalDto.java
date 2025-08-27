@@ -36,6 +36,10 @@ public class AnimalDto {
   private String tipoUltimaDesparasitacionInterna;
   private LocalDate fechaUltimaDesparasitacionExterna;
   private String tipoUltimaDesparasitacionExterna;
+  private String usuarioCreacion;
+  private LocalDate fechaCreacion;
+  private String usuarioModificacion;
+  private LocalDate fechaModificacion;
   private List<DesparasitacionDto> desparasitaciones;
   private List<HistorialDto> historial;
   private List<IntervencionDto> intervenciones;

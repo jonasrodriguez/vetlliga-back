@@ -12,13 +12,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -47,8 +51,10 @@ public class AnimalController {
 
   @PostMapping
   public ResponseEntity<AnimalDto> createAnimal(@RequestBody AnimalDto animal) {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    var username = authentication.getName();
 
-    final var nuevaAlta = animalService.altaAnimal(animal);
+    final var nuevaAlta = animalService.altaAnimal(animal, username);
     return ResponseEntity.ok(nuevaAlta);
   }
 
@@ -61,8 +67,10 @@ public class AnimalController {
 
   @PutMapping("/{id}")
   public ResponseEntity<AnimalDto> updateAnimal(@PathVariable Integer id, @RequestBody AnimalDto animal) {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    var username = authentication.getName();
 
-    final var animalActualizado = animalService.actualizarAnimal(id, animal);
+    final var animalActualizado = animalService.actualizarAnimal(id, animal, username);
     return ResponseEntity.ok(animalActualizado);
   }
 
@@ -73,12 +81,22 @@ public class AnimalController {
     return ResponseEntity.ok().build();
   }
 
+  @PatchMapping("/{id}/active")
+  public ResponseEntity<Void> toggleAnimalActive(@PathVariable Integer id, @RequestParam boolean active) {
+
+    animalService.toggleActive(id, active);
+    return ResponseEntity.ok().build();
+  }
+
   @PostMapping("/load-sample-data")
   public ResponseEntity<?> loadSampleAnimals() throws IOException {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    var username = authentication.getName();
+
     InputStream inputStream = getClass().getResourceAsStream("/data/animals_data.json");
     List<AnimalDto> animals = objectMapper.readValue(inputStream, new TypeReference<>() {
     });
-    animals.forEach(animalService::altaAnimal);
+    animals.forEach(a -> animalService.altaAnimal(a, username));
     animalService.randomizerAnimals();
 
     return ResponseEntity.ok("Loaded " + animals.size() + " sample animals");

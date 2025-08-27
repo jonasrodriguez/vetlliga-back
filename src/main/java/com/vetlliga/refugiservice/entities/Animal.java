@@ -57,6 +57,11 @@ public class Animal {
   @Enumerated(EnumType.STRING)
   private EstadoAnimal estado;
   private LocalDate fechaEstado;
+  private String usuarioCreacion;
+  private LocalDate fechaCreacion;
+  private String usuarioModificacion;
+  private LocalDate fechaModificacion;
+  private Boolean activo = true;
   @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)
   List<Peso> pesos = new ArrayList<>();
   @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)

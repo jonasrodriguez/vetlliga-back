@@ -38,7 +38,7 @@ public class AnimalService {
     return animalMapper.toDto(entity);
   }
 
-  public AnimalDto altaAnimal(AnimalDto animal) {
+  public AnimalDto altaAnimal(AnimalDto animal, String username) {
     log.debug("Alta nuevo animal: {}", animal);
 
     final var now = LocalDate.now();
@@ -49,6 +49,8 @@ public class AnimalService {
     animalEntity.setFechaEntrada(now);
     animalEntity.setFechaEstado(now);
     animalEntity.setFechaLocalizacion(now);
+    animalEntity.setFechaCreacion(now);
+    animalEntity.setUsuarioCreacion(username);
     final var savedAnimal = animalRepository.save(animalEntity);
 
     // Completamos la creacion con la subentities despues del guardado inicial
@@ -58,7 +60,7 @@ public class AnimalService {
     return animalMapper.toDto(completeAnimal);
   }
 
-  public AnimalDto actualizarAnimal(Integer id, AnimalDto animal) {
+  public AnimalDto actualizarAnimal(Integer id, AnimalDto animal, String username) {
     log.debug("Actualizar animal: {}", animal);
 
     final var existingAnimal = animalRepository.findById(id).orElse(null);
@@ -67,6 +69,8 @@ public class AnimalService {
     }
 
     animalMapper.updateEntityFromDto(animal, existingAnimal);
+    existingAnimal.setUsuarioModificacion(username);
+    existingAnimal.setFechaModificacion(LocalDate.now());
     final var response = animalRepository.save(existingAnimal);
 
     return animalMapper.toDto(response);
@@ -80,6 +84,14 @@ public class AnimalService {
     }
 
     animalRepository.deleteById(id);
+  }
+
+  public void toggleActive(Integer id, boolean active) {
+    var animal = animalRepository.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Animal con id " + id + " no encontrado"));
+
+    animal.setActivo(active);
+    animalRepository.save(animal);
   }
 
   public void randomizerAnimals() {
