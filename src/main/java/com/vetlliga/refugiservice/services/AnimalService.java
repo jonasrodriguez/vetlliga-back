@@ -51,13 +51,9 @@ public class AnimalService {
     animalEntity.setFechaLocalizacion(now);
     animalEntity.setFechaCreacion(now);
     animalEntity.setUsuarioCreacion(username);
+
     final var savedAnimal = animalRepository.save(animalEntity);
-
-    // Completamos la creacion con la subentities despues del guardado inicial
-    var entityComplete = animalMapper.toEntityComplete(savedAnimal, animal);
-    final var completeAnimal = animalRepository.save(entityComplete);
-
-    return animalMapper.toDto(completeAnimal);
+    return animalMapper.toDto(savedAnimal);
   }
 
   public AnimalDto actualizarAnimal(Integer id, AnimalDto animal, String username) {

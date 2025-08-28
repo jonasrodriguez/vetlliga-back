@@ -174,37 +174,6 @@ public class AnimalMapper {
     }
   }
 
-  public Animal toEntityComplete(Animal entity, AnimalDto dto) {
-
-    entity.setPesos(mapToEntityList(dto.getPesos(), pesoMapper::toEntity, entity));
-    entity.setDesparasitaciones(mapToEntityList(dto.getDesparasitaciones(), desparasitacionMapper::toEntity, entity));
-    entity.setHistorial(mapToEntityList(dto.getHistorial(), historialMapper::toEntity, entity));
-    entity.setIntervenciones(mapToEntityList(dto.getIntervenciones(), intervencionMapper::toEntity, entity));
-    entity.setTests(mapToEntityList(dto.getTests(), testMapper::toEntity, entity));
-    entity.setVacunaciones(mapToEntityList(dto.getVacunaciones(), vacunacionMapper::toEntity, entity));
-    //entity.setDocumentos(mapToEntityList(dto.getDocumentos(), documentosMapper::toEntity, entity));
-
-    return entity;
-  }
-
-  private <T, R> List<R> mapToDtoList(List<T> entities, Function<T, R> mapper) {
-    if (isNull(entities)) {
-      return List.of();
-    }
-    return entities.stream()
-        .map(mapper)
-        .toList();
-  }
-
-  private <T, R> List<R> mapToEntityList(List<T> dtos, BiFunction<T, Animal, R> mapper, Animal animal) {
-    if (isNull(dtos)) {
-      return List.of();
-    }
-    return dtos.stream()
-        .map(dto -> mapper.apply(dto, animal))
-        .collect(Collectors.toCollection(ArrayList::new));
-  }
-
   private <T, D> List<D> mapAndSortByDateDesc(List<T> list, Function<T, D> mapper, Function<D, LocalDateTime> dateGetter) {
     return list.stream()
         .map(mapper)
