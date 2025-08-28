@@ -6,9 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,5 +31,7 @@ public class Historial {
   @JoinColumn(name = "animal_id", nullable = false)
   private Animal animal;
   private LocalDateTime fecha;
+  @Lob
+  @Column(name = "descripcion", columnDefinition = "TEXT")
   private String descripcion;
 }
