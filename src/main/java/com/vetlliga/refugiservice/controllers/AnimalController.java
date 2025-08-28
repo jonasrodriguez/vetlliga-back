@@ -39,7 +39,7 @@ public class AnimalController {
 
     final var sort = Sort.by(
         Sort.Direction.fromString(criteria.getSortDirection() != null ? criteria.getSortDirection() : "asc"),
-        criteria.getSortBy() != null ? criteria.getSortBy() : "fechaEntrada");
+        criteria.getSortBy() != null ? criteria.getSortBy() : "nombre ");
 
     final var page = criteria.getPage() != null ? criteria.getPage() : 0;
     final var size = criteria.getPageSize() != null ? criteria.getPageSize() : 25;

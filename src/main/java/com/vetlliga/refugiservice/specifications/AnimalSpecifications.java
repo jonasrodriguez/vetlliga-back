@@ -64,8 +64,9 @@ public class AnimalSpecifications {
       Predicate nombrePredicate = builder.like(builder.lower(root.get("nombre")), likePattern);
       Predicate chipPredicate = builder.like(builder.lower(root.get("chip")), likePattern);
       Predicate numeroRegistroPredicate = builder.like(builder.lower(root.get("numeroRegistro")), likePattern);
+      Predicate enfermedadesPredicate = builder.like(builder.lower(root.get("enfermedades")), likePattern);
 
-      predicates.add(builder.or(nombrePredicate, chipPredicate, numeroRegistroPredicate));
+      predicates.add(builder.or(nombrePredicate, chipPredicate, numeroRegistroPredicate, enfermedadesPredicate));
     }
   }
 
