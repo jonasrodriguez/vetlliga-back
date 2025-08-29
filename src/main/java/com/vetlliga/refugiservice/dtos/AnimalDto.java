@@ -25,6 +25,7 @@ public class AnimalDto {
   private String origen;
   private String enfermedades;
   private String antecedentes;
+  private Integer localizacionId;
   private String localizacion;
   private LocalDate fechaLocalizacion;
   private EstadoAnimal estado;

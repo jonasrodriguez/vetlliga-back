@@ -1,13 +1,10 @@
 package com.vetlliga.refugiservice.controllers;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vetlliga.refugiservice.dtos.AnimalDto;
 import com.vetlliga.refugiservice.dtos.ListadoAnimalesCriteria;
 import com.vetlliga.refugiservice.services.AnimalService;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -53,7 +50,7 @@ public class AnimalController {
   @PostMapping
   public ResponseEntity<AnimalDto> createAnimal(@RequestBody AnimalDto animal) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    var username = authentication.getName();
+    final var username = authentication.getName();
 
     final var nuevaAlta = animalService.altaAnimal(animal, username);
     return ResponseEntity.ok(nuevaAlta);
@@ -61,7 +58,6 @@ public class AnimalController {
 
   @GetMapping("/{id}")
   public ResponseEntity<AnimalDto> getAnimal(@PathVariable Integer id) {
-
     final var animal = animalService.getAnimal(id);
     return ResponseEntity.ok(animal);
   }
@@ -69,7 +65,7 @@ public class AnimalController {
   @PutMapping("/{id}")
   public ResponseEntity<AnimalDto> updateAnimal(@PathVariable Integer id, @RequestBody AnimalDto animal) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    var username = authentication.getName();
+    final var username = authentication.getName();
 
     final var animalActualizado = animalService.actualizarAnimal(id, animal, username);
     return ResponseEntity.ok(animalActualizado);
@@ -92,14 +88,9 @@ public class AnimalController {
   @PostMapping("/load-sample-data")
   public ResponseEntity<?> loadSampleAnimals() throws IOException {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    var username = authentication.getName();
+    final var username = authentication.getName();
 
-    InputStream inputStream = getClass().getResourceAsStream("/data/animals_data.json");
-    List<AnimalDto> animals = objectMapper.readValue(inputStream, new TypeReference<>() {
-    });
-    animals.forEach(a -> animalService.altaAnimal(a, username));
-    animalService.randomizerAnimals();
-
+    final var animals = animalService.loadSampleAnimals(username);
     return ResponseEntity.ok("Loaded " + animals.size() + " sample animals");
   }
 

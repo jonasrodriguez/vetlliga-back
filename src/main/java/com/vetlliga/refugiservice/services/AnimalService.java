@@ -2,15 +2,23 @@ package com.vetlliga.refugiservice.services;
 
 import static java.util.Objects.isNull;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vetlliga.refugiservice.constants.EstadoAnimal;
+import com.vetlliga.refugiservice.constants.TipoAnimal;
 import com.vetlliga.refugiservice.dtos.AnimalDto;
 import com.vetlliga.refugiservice.dtos.ListadoAnimalesCriteria;
 import com.vetlliga.refugiservice.exceptions.ResourceNotFoundException;
 import com.vetlliga.refugiservice.mappers.AnimalMapper;
 import com.vetlliga.refugiservice.repositories.AnimalRepository;
+import com.vetlliga.refugiservice.repositories.LocalizacionRepository;
 import com.vetlliga.refugiservice.specifications.AnimalSpecifications;
 import jakarta.transaction.Transactional;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -24,7 +32,9 @@ import org.springframework.stereotype.Service;
 public class AnimalService {
 
   private final AnimalRepository animalRepository;
+  private final LocalizacionRepository localizacionRepository;
   private final AnimalMapper animalMapper;
+  private final ObjectMapper objectMapper;
 
   public Page<AnimalDto> listAnimals(ListadoAnimalesCriteria criteria, Pageable pageable) {
     final var specification = AnimalSpecifications.filterByCriteria(criteria);
@@ -90,16 +100,36 @@ public class AnimalService {
     animalRepository.save(animal);
   }
 
-  public void randomizerAnimals() {
-    log.debug("Randomizer animals");
+  public List<AnimalDto> loadSampleAnimals(String username) throws IOException {
+    log.debug("Cargando animales de ejemplo...");
 
-    var animales = animalRepository.findAll();
-    animales.forEach(a -> {
+    final var localizaciones = localizacionRepository.findAll();
+    final var localizacionesGato = localizaciones.stream().filter(l -> l.getTipo().equals(TipoAnimal.GATO)).toList();
+    final var localizacionesPerro = localizaciones.stream().filter(l -> l.getTipo().equals(TipoAnimal.PERRO)).toList();
+
+    InputStream inputStream = getClass().getResourceAsStream("/data/animals_data.json");
+    List<AnimalDto> animals = objectMapper.readValue(inputStream, new TypeReference<>() {
+    });
+    animals.forEach(a -> {
       final var fechaRandom = LocalDate.now().minusDays((long) (Math.random() * 365));
       a.setFechaEntrada(fechaRandom);
       a.setFechaEstado(fechaRandom);
       a.setFechaLocalizacion(fechaRandom);
+
+      var randomEstado = EstadoAnimal.values()[new Random().nextInt(EstadoAnimal.values().length)];
+      a.setEstado(randomEstado);
+
+      if (a.getTipo().equals(TipoAnimal.GATO) && !localizacionesGato.isEmpty()) {
+        var randomLocalizacion = localizacionesGato.get(new Random().nextInt(localizacionesGato.size()));
+        a.setLocalizacionId(randomLocalizacion.getId());
+      } else if (a.getTipo().equals(TipoAnimal.PERRO) && !localizacionesPerro.isEmpty()) {
+        var randomLocalizacion = localizacionesPerro.get(new Random().nextInt(localizacionesPerro.size()));
+        a.setLocalizacionId(randomLocalizacion.getId());
+      }
+
+      altaAnimal(a, username);
     });
-    animalRepository.saveAll(animales);
+
+    return animals;
   }
 }

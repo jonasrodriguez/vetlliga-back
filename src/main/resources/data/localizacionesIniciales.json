@@ -1,0 +1,18 @@
+{
+  "localizaciones": [
+    { "nombre": "Hospitalización", "tipo": "GATO" },
+    { "nombre": "Hospitalización Consulta", "tipo": "GATO" },
+    { "nombre": "Cuarentena Entrada", "tipo": "GATO" },
+    { "nombre": "Cuarentena Salida", "tipo": "GATO" },
+    { "nombre": "Adaptación", "tipo": "GATO" },
+    { "nombre": "Chiquipark", "tipo": "GATO" },
+    { "nombre": "Patio Verde", "tipo": "GATO" },
+    { "nombre": "Zona Leucemia", "tipo": "GATO" },
+    { "nombre": "Antigua Adaptación", "tipo": "GATO" },
+    { "nombre": "Colonia", "tipo": "GATO" },
+    { "nombre": "Colonia Externa", "tipo": "GATO" },
+    { "nombre": "Propietario", "tipo": "GATO" },
+    { "nombre": "Nivel 1", "tipo": "PERRO" },
+    { "nombre": "Nivel 2-3", "tipo": "PERRO" }
+  ]
+}

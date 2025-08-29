@@ -1,7 +1,5 @@
 package com.vetlliga.refugiservice.mappers;
 
-import static java.util.Objects.isNull;
-
 import com.vetlliga.refugiservice.constants.LocalizacionGato;
 import com.vetlliga.refugiservice.constants.LocalizacionPerro;
 import com.vetlliga.refugiservice.constants.TipoAnimal;
@@ -16,12 +14,9 @@ import com.vetlliga.refugiservice.dtos.TestDto;
 import com.vetlliga.refugiservice.dtos.VacunacionDto;
 import com.vetlliga.refugiservice.entities.Animal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.BiFunction;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
