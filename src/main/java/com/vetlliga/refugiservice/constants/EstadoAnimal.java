@@ -8,7 +8,8 @@ public enum EstadoAnimal {
   EN_ACOGIDA(1),
   RESERVADO(2),
   ADOPTADO(3),
-  FALLECIDO(4);
+  FALLECIDO(4),
+  DE_PROPIETARIO(5);
 
   private final int value;
 
