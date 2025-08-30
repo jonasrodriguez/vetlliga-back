@@ -9,7 +9,7 @@ public enum EstadoAnimal {
   RESERVADO(2),
   ADOPTADO(3),
   FALLECIDO(4),
-  DE_PROPIETARIO(5);
+  PROPIETARIO(5);
 
   private final int value;
 
