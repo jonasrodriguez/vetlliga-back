@@ -51,15 +51,10 @@ public class AnimalService {
   public AnimalDto altaAnimal(AnimalDto animal, String username) {
     log.debug("Alta nuevo animal: {}", animal);
 
-    final var now = LocalDate.now();
-
     final var animalEntity = animalMapper.toEntity(animal);
 
     animalEntity.setId(null);
-    animalEntity.setFechaEntrada(now);
-    animalEntity.setFechaEstado(now);
-    animalEntity.setFechaLocalizacion(now);
-    animalEntity.setFechaCreacion(now);
+    animalEntity.setFechaCreacion(LocalDate.now());
     animalEntity.setUsuarioCreacion(username);
 
     final var savedAnimal = animalRepository.save(animalEntity);
