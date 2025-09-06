@@ -1,9 +1,12 @@
 package com.vetlliga.refugiservice.repositories;
 
+import static java.util.Objects.nonNull;
+
 import com.vetlliga.refugiservice.constants.TipoAnimal;
 import com.vetlliga.refugiservice.entities.Localizacion;
 import jakarta.annotation.PostConstruct;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -33,6 +36,10 @@ public class LocalizacionCache {
     }
   }
 
+  public List<Localizacion> getAll() {
+    return cache.values().stream().flatMap(m -> m.values().stream()).toList();
+  }
+
   public Localizacion get(TipoAnimal tipo, Integer id) {
     return cache.getOrDefault(tipo, Map.of()).get(id);
   }
@@ -45,6 +52,22 @@ public class LocalizacionCache {
     for (Map<Integer, Localizacion> map : cache.values()) {
       if (map.containsKey(id)) {
         return map.get(id);
+      }
+    }
+    final var loc = repository.findById(id).orElse(null);
+    if (nonNull(loc)) {
+      cache.computeIfAbsent(loc.getTipo(), k -> new java.util.HashMap<>()).put(id, loc);
+      return loc;
+    }
+
+    return null;
+  }
+
+  public Localizacion getByName(String nombre, TipoAnimal tipo) {
+    Map<Integer, Localizacion> map = cache.getOrDefault(tipo, Map.of());
+    for (Localizacion loc : map.values()) {
+      if (loc.getNombre().equalsIgnoreCase(nombre)) {
+        return loc;
       }
     }
     return null;

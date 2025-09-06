@@ -12,5 +12,7 @@ public interface UsuarioMapper {
   UsuarioDto toDto(Usuario entity);
 
   @Mapping(target = "password", ignore = true)
+  @Mapping(target = "enabled", ignore = true)
+  @Mapping(target = "hidden", ignore = true)
   Usuario toEntity(UsuarioDto dto);
 }
