@@ -4,8 +4,6 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 import com.vetlliga.refugiservice.constants.EstadoAnimal;
-import com.vetlliga.refugiservice.constants.LocalizacionGato;
-import com.vetlliga.refugiservice.constants.LocalizacionPerro;
 import com.vetlliga.refugiservice.constants.TipoAnimal;
 import com.vetlliga.refugiservice.constants.TipoDesparasitacion;
 import com.vetlliga.refugiservice.dtos.ListadoAnimalesCriteria;
@@ -92,17 +90,8 @@ public class AnimalSpecifications {
   private static void addLocalizacion(ListadoAnimalesCriteria criteria, Root<Animal> root,
       CriteriaBuilder builder, List<Predicate> predicates) {
 
-    if (nonNull(criteria.getLocalizacion()) && nonNull(criteria.getTipo())) {
-      TipoAnimal tipo = TipoAnimal.fromValue(criteria.getTipo());
-      if (tipo == TipoAnimal.PERRO) {
-        predicates.add(
-            builder.equal(root.get("localizacionPerro"), LocalizacionPerro.fromValue(criteria.getLocalizacion()))
-        );
-      } else if (tipo == TipoAnimal.GATO) {
-        predicates.add(
-            builder.equal(root.get("localizacionGato"), LocalizacionGato.fromValue(criteria.getLocalizacion()))
-        );
-      }
+    if (nonNull(criteria.getLocalizacion())) {
+      predicates.add(builder.equal(root.get("localizacion").get("id"), criteria.getLocalizacion()));
     }
   }
 
