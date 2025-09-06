@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.4.0] - 2025-08-30
+### Added
+- New estado "Propietario" for both types of animals
+
+### Changed
+- Localizacion is now dynamic and can be set by the user
+
+---
+
 ## [1.3.0] - 2025-08-28
 ### Added
 - Search box also searches by "enfermedades"
