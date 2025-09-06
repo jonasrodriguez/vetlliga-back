@@ -1,8 +1,6 @@
 package com.vetlliga.refugiservice.entities;
 
 import com.vetlliga.refugiservice.constants.EstadoAnimal;
-import com.vetlliga.refugiservice.constants.LocalizacionGato;
-import com.vetlliga.refugiservice.constants.LocalizacionPerro;
 import com.vetlliga.refugiservice.constants.SexoAnimal;
 import com.vetlliga.refugiservice.constants.TipoAnimal;
 import jakarta.persistence.CascadeType;
