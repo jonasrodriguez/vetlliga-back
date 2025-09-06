@@ -10,8 +10,6 @@
         "color": "Dorado",
         "origen": "Devolución",
         "enfermedades": "Hipotiroidismo;Diabetes",
-        "localizacion": "NIVEL_2_3",
-        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2024-11-25T18:07:12",
@@ -92,8 +90,6 @@
         "color": "Negro",
         "origen": "Devolución",
         "enfermedades": "Artrosis;Displasia de cadera",
-        "localizacion": "NIVEL_1",
-        "estado": "FALLECIDO",
         "fechaUltimaVacunacion": "2024-11-16",
         "fechaUltimaDesparasitacion": "2024-11-25",
         "fechaUltimoTest": "2024-11-24",
@@ -177,8 +173,6 @@
         "color": "Crema",
         "origen": "Devolución",
         "enfermedades": "Insuficiencia renal;Epilepsia",
-        "localizacion": "NIVEL_2_3",
-        "estado": "EN_ACOGIDA",
         "desparasitaciones": [
             {
                 "fecha": "2024-11-25T10:55:44",
@@ -258,8 +252,6 @@
         "raza": "Beagle",
         "color": "Tricolor",
         "origen": "Transferencia",
-        "localizacion": "NIVEL_1",
-        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2024-11-07T18:44:33",
@@ -339,8 +331,6 @@
         "raza": "Boxer",
         "color": "Leonado",
         "origen": "Devolución",
-        "localizacion": "NIVEL_1",
-        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2024-11-23T19:44:55",
@@ -420,8 +410,6 @@
         "raza": "Siamés",
         "color": "Marrón oscuro",
         "origen": "Recogido calle",
-        "localizacion": "HOSPITALIZACION",
-        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2024-12-28T19:44:55",
@@ -502,8 +490,6 @@
         "color": "Persa",
         "origen": "Particular",
         "enfermedades": "Enfermedad renal crónica;Hipertiroidismo",
-        "localizacion": "ANTIGUA_ADAPTACION",
-        "estado": "RESERVADO",
         "desparasitaciones": [
             {
                 "fecha": "2024-11-25T19:44:55",
@@ -583,8 +569,6 @@
         "raza": "Maine Coon",
         "color": "Atigrado Marrón",
         "origen": "Transferencia",
-        "localizacion": "COLONIA",
-        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2025-01-21T19:44:55",
@@ -665,8 +649,6 @@
         "color": "Gris",
         "origen": "Particular",
         "enfermedades": "Leucemia felina;Asma",
-        "localizacion": "HOSPITALIZACION",
-        "estado": "EN_ACOGIDA",
         "desparasitaciones": [
             {
                 "fecha": "2025-01-06T19:44:55",
@@ -747,8 +729,6 @@
         "color": "Manchado Marrón",
         "origen": "Transferencia",
         "enfermedades": "Leucemia felina",
-        "localizacion": "CUARENTENA_SALIDA",
-        "estado": "EN_PROTECTORA",
         "desparasitaciones": [
             {
                 "fecha": "2024-12-15T19:44:55",

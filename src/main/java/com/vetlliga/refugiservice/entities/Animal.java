@@ -53,10 +53,6 @@ public class Animal {
   private String origen;
   private String enfermedades;
   private String antecedentes;
-  @Enumerated(EnumType.STRING)
-  private LocalizacionPerro localizacionPerro;
-  @Enumerated(EnumType.STRING)
-  private LocalizacionGato localizacionGato;
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "localizacion_id",
       foreignKey = @ForeignKey(name = "fk_animal_localizacion"))

@@ -116,10 +116,10 @@ public class AnimalService {
 
       if (a.getTipo().equals(TipoAnimal.GATO) && !localizacionesGato.isEmpty()) {
         var randomLocalizacion = localizacionesGato.get(new Random().nextInt(localizacionesGato.size()));
-        a.setLocalizacionId(randomLocalizacion.getId());
+        a.setLocalizacion(randomLocalizacion.getId());
       } else if (a.getTipo().equals(TipoAnimal.PERRO) && !localizacionesPerro.isEmpty()) {
         var randomLocalizacion = localizacionesPerro.get(new Random().nextInt(localizacionesPerro.size()));
-        a.setLocalizacionId(randomLocalizacion.getId());
+        a.setLocalizacion(randomLocalizacion.getId());
       }
 
       altaAnimal(a, username);

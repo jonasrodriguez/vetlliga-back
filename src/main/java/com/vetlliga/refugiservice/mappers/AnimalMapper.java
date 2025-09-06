@@ -1,8 +1,5 @@
 package com.vetlliga.refugiservice.mappers;
 
-import com.vetlliga.refugiservice.constants.LocalizacionGato;
-import com.vetlliga.refugiservice.constants.LocalizacionPerro;
-import com.vetlliga.refugiservice.constants.TipoAnimal;
 import com.vetlliga.refugiservice.constants.TipoDesparasitacion;
 import com.vetlliga.refugiservice.dtos.AnimalDto;
 import com.vetlliga.refugiservice.dtos.DesparasitacionDto;
@@ -13,6 +10,7 @@ import com.vetlliga.refugiservice.dtos.PesoDto;
 import com.vetlliga.refugiservice.dtos.TestDto;
 import com.vetlliga.refugiservice.dtos.VacunacionDto;
 import com.vetlliga.refugiservice.entities.Animal;
+import com.vetlliga.refugiservice.repositories.LocalizacionCache;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
@@ -31,6 +29,7 @@ public class AnimalMapper {
   private final TestMapper testMapper;
   private final VacunacionMapper vacunacionMapper;
   private final DocumentosMapper documentosMapper;
+  private final LocalizacionCache localizacionCache;
 
   public AnimalDto toDto(Animal animal) {
 
@@ -72,7 +71,7 @@ public class AnimalMapper {
         .origen(animal.getOrigen())
         .enfermedades(animal.getEnfermedades())
         .antecedentes(animal.getAntecedentes())
-        .localizacion(animal.getTipo().equals(TipoAnimal.PERRO) ? animal.getLocalizacionPerro().name() : animal.getLocalizacionGato().name())
+        .localizacion(animal.getLocalizacion().getId())
         .fechaLocalizacion(animal.getFechaLocalizacion())
         .estado(animal.getEstado())
         .fechaEstado(animal.getFechaEstado())
@@ -110,8 +109,7 @@ public class AnimalMapper {
 
   public Animal toEntity(AnimalDto dto) {
 
-    final var locPerro = dto.getTipo().equals(TipoAnimal.PERRO) ? LocalizacionPerro.valueOf(dto.getLocalizacion()) : null;
-    final var locGato = dto.getTipo().equals(TipoAnimal.GATO) ? LocalizacionGato.valueOf(dto.getLocalizacion()) : null;
+    final var localizacion = localizacionCache.getById(dto.getLocalizacion());
 
     var animal = new Animal();
     animal.setId(dto.getId());
@@ -128,8 +126,7 @@ public class AnimalMapper {
     animal.setEnfermedades(dto.getEnfermedades());
     animal.setAntecedentes(dto.getAntecedentes());
 
-    animal.setLocalizacionPerro(locPerro);
-    animal.setLocalizacionGato(locGato);
+    animal.setLocalizacion(localizacion);
     animal.setFechaLocalizacion(dto.getFechaLocalizacion());
     animal.setEstado(dto.getEstado());
     animal.setFechaEstado(dto.getFechaEstado());
@@ -138,6 +135,8 @@ public class AnimalMapper {
   }
 
   public void updateEntityFromDto(AnimalDto dto, Animal entity) {
+
+    final var localizacion = localizacionCache.getById(dto.getLocalizacion());
 
     entity.setNumeroRegistro(dto.getNumeroRegistro());
     entity.setTipo(dto.getTipo());
@@ -154,19 +153,8 @@ public class AnimalMapper {
 
     entity.setEstado(dto.getEstado());
     entity.setFechaEstado(dto.getFechaEstado());
+    entity.setLocalizacion(localizacion);
     entity.setFechaLocalizacion(dto.getFechaLocalizacion());
-
-    if (dto.getTipo().equals(TipoAnimal.PERRO)) {
-      if (!entity.getLocalizacionPerro().equals(LocalizacionPerro.valueOf(dto.getLocalizacion()))) {
-        entity.setLocalizacionPerro(LocalizacionPerro.valueOf(dto.getLocalizacion()));
-        entity.setLocalizacionGato(null);
-      }
-    } else {
-      if (!entity.getLocalizacionGato().equals(LocalizacionGato.valueOf(dto.getLocalizacion()))) {
-        entity.setLocalizacionGato(LocalizacionGato.valueOf(dto.getLocalizacion()));
-        entity.setLocalizacionPerro(null);
-      }
-    }
   }
 
   private <T, D> List<D> mapAndSortByDateDesc(List<T> list, Function<T, D> mapper, Function<D, LocalDateTime> dateGetter) {
