@@ -3,8 +3,10 @@ package com.vetlliga.refugiservice.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vetlliga.refugiservice.dtos.UsuarioDto;
 import com.vetlliga.refugiservice.services.UsuarioService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +20,12 @@ public class UsuarioController {
 
   private final UsuarioService usuarioService;
   private final ObjectMapper objectMapper;
+
+  @GetMapping
+  public ResponseEntity<List<UsuarioDto>> listadoUsuarios() {
+    final var usuarios = usuarioService.getAllUsuarios();
+    return ResponseEntity.ok(usuarios);
+  }
 
   @PostMapping
   public ResponseEntity<UsuarioDto> crearUsuario(@RequestBody UsuarioDto usuarioDto) {

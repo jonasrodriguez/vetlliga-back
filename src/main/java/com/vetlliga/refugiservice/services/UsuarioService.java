@@ -4,6 +4,7 @@ import com.vetlliga.refugiservice.dtos.UsuarioDto;
 import com.vetlliga.refugiservice.mappers.UsuarioMapper;
 import com.vetlliga.refugiservice.repositories.UsuarioRepository;
 import jakarta.transaction.Transactional;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +19,14 @@ public class UsuarioService {
   private final UsuarioRepository usuarioRepository;
   private final UsuarioMapper usuarioMapper;
   private final PasswordEncoder passwordEncoder;
+
+  public List<UsuarioDto> getAllUsuarios() {
+    final var usuarios = usuarioRepository.findAll();
+    return usuarios.stream()
+        .filter(u -> !u.getUsername().equals("admin"))
+        .map(usuarioMapper::toDto)
+        .toList();
+  }
 
   public UsuarioDto createUsuario(UsuarioDto dto) {
 
