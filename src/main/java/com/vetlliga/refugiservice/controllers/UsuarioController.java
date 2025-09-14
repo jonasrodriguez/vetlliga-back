@@ -1,6 +1,7 @@
 package com.vetlliga.refugiservice.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vetlliga.refugiservice.dtos.PasswordUpdateDto;
 import com.vetlliga.refugiservice.dtos.UsuarioDto;
 import com.vetlliga.refugiservice.services.UsuarioService;
 import java.util.List;
@@ -45,8 +46,8 @@ public class UsuarioController {
   }
 
   @PutMapping("/{id}/password")
-  public ResponseEntity<Void> actualizarPassword(@PathVariable Integer id, @RequestBody String nuevoPassword) {
-    usuarioService.changeUserPassword(id, nuevoPassword);
+  public ResponseEntity<Void> actualizarPassword(@PathVariable Integer id, @RequestBody PasswordUpdateDto dto) {
+    usuarioService.changeUserPassword(id, dto.getNewPassword());
 
     return ResponseEntity.ok().build();
   }
