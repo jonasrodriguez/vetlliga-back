@@ -47,7 +47,7 @@ public class UsuarioController {
 
   @PutMapping("/{id}/password")
   public ResponseEntity<Void> actualizarPassword(@PathVariable Integer id, @RequestBody PasswordUpdateDto dto) {
-    usuarioService.changeUserPassword(id, dto.getNewPassword());
+    usuarioService.changeUserPassword(id, dto.getPassword());
 
     return ResponseEntity.ok().build();
   }
