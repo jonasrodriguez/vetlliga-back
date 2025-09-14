@@ -55,8 +55,8 @@ public class AnimalMapper {
         .max(Comparator.comparing(DesparasitacionDto::getFecha));
 
     final var ultimoPeso = pesosDtos.stream()
+        .max(Comparator.comparing(PesoDto::getFecha))
         .map(PesoDto::getPeso)
-        .max(Float::compareTo)
         .orElse(null);
 
     var response = AnimalDto.builder()
