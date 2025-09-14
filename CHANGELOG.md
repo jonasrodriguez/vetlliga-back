@@ -6,7 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.4.0] - 2025-08-30
+## [1.5.0] - 2025-09-14
+### Added
+- Update, delete and update password endpoints for users
+
+---
+
+## [1.4.0] - 2025-09-06
 ### Added
 - New estado "Propietario" for both types of animals
 
