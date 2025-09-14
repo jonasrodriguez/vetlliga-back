@@ -30,6 +30,14 @@ public class UsuarioService {
 
   public UsuarioDto createUsuario(UsuarioDto dto) {
 
+    if (dto.getUsername() == null || dto.getUsername().isBlank()) {
+      throw new IllegalArgumentException("Username cannot be empty");
+    }
+
+    if (dto.getPassword() == null || dto.getPassword().isBlank()) {
+      throw new IllegalArgumentException("Password cannot be empty");
+    }
+
     if (usuarioRepository.existsByUsername(dto.getUsername())) {
       throw new IllegalArgumentException("Ya existe un usuario con ese nombre de usuario");
     }
@@ -42,24 +50,46 @@ public class UsuarioService {
     return usuarioMapper.toDto(respuesta);
   }
 
-  /*public Usuario login(String username, String rawPassword) {
-    Usuario usuario = usuarioRepository.findByUsername(username)
-        .orElseThrow(() -> new IllegalArgumentException("User not found"));
-    if (!passwordEncoder.matches(rawPassword, usuario.getPassword())) {
-      throw new IllegalArgumentException("Invalid credentials");
+  public UsuarioDto editarUsuario(Integer userId, UsuarioDto dto) {
+
+    if (dto.getUsername() == null || dto.getUsername().isBlank()) {
+      throw new IllegalArgumentException("Username cannot be empty");
     }
-    return usuario;
+
+    final var usuario = usuarioRepository.findById(userId)
+        .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+    if (!usuario.getUsername().equals(dto.getUsername()) && usuarioRepository.existsByUsername(dto.getUsername())) {
+      throw new IllegalArgumentException("Ya existe un usuario con ese nombre de usuario");
+    }
+
+    usuarioMapper.updateEntityFromDto(dto, usuario);
+
+    final var respuesta =  usuarioRepository.save(usuario);
+    return usuarioMapper.toDto(respuesta);
   }
 
-  public void changeUserPassword(String username, String oldPassword, String newPassword) {
-    Usuario usuario = usuarioRepository.findByUsername(username)
+  public void changeUserPassword(Integer userId, String newPassword) {
+    var usuario = usuarioRepository.findById(userId)
         .orElseThrow(() -> new IllegalArgumentException("User not found"));
-    if (!passwordEncoder.matches(oldPassword, usuario.getPassword())) {
-      throw new IllegalArgumentException("Old password is incorrect");
+
+    if (newPassword == null || newPassword.isBlank()) {
+      throw new IllegalArgumentException("New password cannot be empty");
     }
+
+    if (newPassword.length() < 8) {
+      throw new IllegalArgumentException("Password must be at least 6 characters long");
+    }
+
     usuario.setPassword(passwordEncoder.encode(newPassword));
     usuarioRepository.save(usuario);
-  }*/
+  }
 
+  public void deleteUsuario(Integer userId) {
+    if (!usuarioRepository.existsById(userId)) {
+      throw new IllegalArgumentException("User not found");
+    }
+    usuarioRepository.deleteById(userId);
+  }
 
 }

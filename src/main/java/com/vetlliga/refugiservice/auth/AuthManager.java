@@ -2,6 +2,7 @@ package com.vetlliga.refugiservice.auth;
 
 import com.vetlliga.refugiservice.dtos.LoginRequest;
 import com.vetlliga.refugiservice.repositories.UsuarioRepository;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AllArgsConstructor;
@@ -22,12 +23,9 @@ public class AuthManager {
 
   public Map<String, String> login(@RequestBody LoginRequest request) {
 
-    var optionalUser = usuarioRepository.findByUsername(request.getUsername());
-    if (optionalUser.isEmpty()) {
-      throw new BadCredentialsException("Invalid credentials");
-    }
+    var user = usuarioRepository.findByUsername(request.getUsername())
+        .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-    final var user = optionalUser.get();
     if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
       throw new BadCredentialsException("Invalid credentials");
     }
@@ -36,6 +34,9 @@ public class AuthManager {
 
     Map<String, String> response = new HashMap<>();
     response.put("token", token);
+
+    user.setLastLogin(LocalDateTime.now());
+    usuarioRepository.save(user);
 
     return response;
   }

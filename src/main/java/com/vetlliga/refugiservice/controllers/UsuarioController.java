@@ -6,11 +6,14 @@ import com.vetlliga.refugiservice.services.UsuarioService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -34,10 +37,23 @@ public class UsuarioController {
     return ResponseEntity.ok(usuario);
   }
 
-  @PutMapping
-  @RequestMapping("/{id}")
-  public ResponseEntity<UsuarioDto> actualizarPassword(@RequestBody UsuarioDto usuarioDto) {
+  @PutMapping("/{id}")
+  public ResponseEntity<UsuarioDto> editarUsuario(@PathVariable Integer id, @RequestBody UsuarioDto usuarioDto) {
 
-    return ResponseEntity.ok(usuarioDto);
+    final var usuario = usuarioService.editarUsuario(id, usuarioDto);
+    return ResponseEntity.ok(usuario);
+  }
+
+  @PutMapping("/{id}/password")
+  public ResponseEntity<Void> actualizarPassword(@PathVariable Integer id, @RequestBody String nuevoPassword) {
+    usuarioService.changeUserPassword(id, nuevoPassword);
+
+    return ResponseEntity.ok().build();
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> eliminarUsuario(@PathVariable Integer id) {
+    usuarioService.deleteUsuario(id);
+    return ResponseEntity.ok().build();
   }
 }
