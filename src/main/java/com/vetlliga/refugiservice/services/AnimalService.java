@@ -92,6 +92,7 @@ public class AnimalService {
         .orElseThrow(() -> new ResourceNotFoundException("Animal con id " + id + " no encontrado"));
 
     animal.setActivo(active);
+    animal.setLocalizacion(null);
     animalRepository.save(animal);
   }
 

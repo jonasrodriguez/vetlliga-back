@@ -1,5 +1,7 @@
 package com.vetlliga.refugiservice.mappers;
 
+import static java.util.Objects.nonNull;
+
 import com.vetlliga.refugiservice.constants.TipoDesparasitacion;
 import com.vetlliga.refugiservice.dtos.AnimalDto;
 import com.vetlliga.refugiservice.dtos.DesparasitacionDto;
@@ -71,7 +73,7 @@ public class AnimalMapper {
         .origen(animal.getOrigen())
         .enfermedades(animal.getEnfermedades())
         .antecedentes(animal.getAntecedentes())
-        .localizacion(animal.getLocalizacion().getId())
+        .localizacion(nonNull(animal.getLocalizacion()) ? animal.getLocalizacion().getId() : null)
         .fechaLocalizacion(animal.getFechaLocalizacion())
         .estado(animal.getEstado())
         .fechaEstado(animal.getFechaEstado())

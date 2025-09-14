@@ -1,5 +1,6 @@
 package com.vetlliga.refugiservice.repositories;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 import com.vetlliga.refugiservice.constants.TipoAnimal;
@@ -49,6 +50,9 @@ public class LocalizacionCache {
   }
 
   public Localizacion getById(Integer id) {
+    if (isNull(id)) {
+      return null;
+    }
     for (Map<Integer, Localizacion> map : cache.values()) {
       if (map.containsKey(id)) {
         return map.get(id);
