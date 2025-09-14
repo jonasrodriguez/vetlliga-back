@@ -45,6 +45,7 @@ public class UsuarioService {
     final var entity = usuarioMapper.toEntity(dto);
     final var encodedPassword = passwordEncoder.encode(dto.getPassword());
     entity.setPassword(encodedPassword);
+    entity.setId(null);
 
     final var respuesta =  usuarioRepository.save(entity);
     return usuarioMapper.toDto(respuesta);
