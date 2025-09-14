@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.1] - 2025-09-14
+### Fixed
+- Fix ultimo peso value
+- Allow localizador to be null when animal is inactive
+- Fix password request body
+- Fix new user id value
+
+---
+
 ## [1.5.0] - 2025-09-14
 ### Added
 - Update, delete and update password endpoints for users
