@@ -23,10 +23,5 @@ WORKDIR /app
 # Copy the built JAR file from the build stage
 COPY --from=build /app/app.jar app.jar
 
-ENV ADMIN_PASSWORD=changeme
-ENV JWT_SECRET=changeme
-ENV UPLOAD_DIR=/data
-ENV DB_URL=mariadb:3306
-
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
