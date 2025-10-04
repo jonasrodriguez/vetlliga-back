@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.2] - 2025-10-04
+### Changed
+- Increase file size to 50MB
+
+---
+
 ## [1.5.1] - 2025-09-14
 ### Fixed
 - Fix ultimo peso value
