@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.3] - 2025-10-05
+### Changed
+- Remove "api" from controllers
+
+---
+
 ## [1.5.2] - 2025-10-04
 ### Changed
 - Increase file size to 50MB
