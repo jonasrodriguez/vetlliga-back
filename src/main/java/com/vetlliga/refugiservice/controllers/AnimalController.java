@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/animales")
+@RequestMapping("/animales")
 @RequiredArgsConstructor
 public class AnimalController {
 

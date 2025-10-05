@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
   private static final String[] NO_AUTH_ENDPOINTS = {
-      "/api/auth/login",
+      "/auth/login",
       "/actuator/health",
       "/actuator/info"
   };
