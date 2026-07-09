@@ -60,6 +60,7 @@ public class Animal {
   private EstadoAnimal estado;
   private LocalDate fechaEstado;
   private Boolean activo = true;
+  private Boolean avatar = false;
 
   @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)
   List<Peso> pesos = new ArrayList<>();

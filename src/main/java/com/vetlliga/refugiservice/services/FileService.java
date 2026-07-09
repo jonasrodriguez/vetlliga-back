@@ -1,6 +1,9 @@
 package com.vetlliga.refugiservice.services;
 
+import static java.util.Objects.isNull;
+
 import com.vetlliga.refugiservice.dtos.DocumentoDto;
+import com.vetlliga.refugiservice.entities.Animal;
 import com.vetlliga.refugiservice.entities.Documento;
 import com.vetlliga.refugiservice.exceptions.ResourceNotFoundException;
 import com.vetlliga.refugiservice.mappers.DocumentosMapper;
@@ -30,6 +33,8 @@ public class FileService {
   private final AnimalRepository animalRepository;
   private final DocumentoRepository documentoRepository;
   private final DocumentosMapper documentosMapper;
+
+  private final String AVATAR_FILE = "avatar_%d.png";
 
   public DocumentoDto storeFile(Integer id, MultipartFile file, String descripcion) throws IOException {
 
@@ -68,6 +73,32 @@ public class FileService {
     return documentosMapper.toDto(documento);
   }
 
+  public void storeAvatar(Integer id, MultipartFile file) throws IOException {
+
+    log.debug("Nuevo avatar: {} para animal: {}", file.getOriginalFilename(), id);
+
+    if (file.isEmpty()) {
+      throw new IllegalArgumentException("El archivo no puede estar vacío");
+    }
+
+    Path uploadPath = Paths.get(uploadDir + "/" + id);
+    if (!Files.exists(uploadPath)) {
+      Files.createDirectories(uploadPath);
+    }
+
+    final var filename = String.format(AVATAR_FILE, id);
+    Path filePath = uploadPath.resolve(filename);
+    file.transferTo(filePath.toFile());
+
+    log.debug("Avatar guardado en: {}", filePath);
+
+    var animalEntity = animalRepository.findById(id).orElseThrow(() ->
+        new ResourceNotFoundException("Animal con id " + id + " no encontrado"));
+
+    animalEntity.setAvatar(true);
+    animalRepository.save(animalEntity);
+  }
+
   public Resource getFileResource(Integer id, Integer fileId) throws IOException {
 
     log.debug("Obteniendo documento: {} para animal: {}", fileId, id);
@@ -87,6 +118,21 @@ public class FileService {
     return new FileSystemResource(filePath);
   }
 
+  public Resource getAvatarResource(Integer id) throws IOException {
+
+    log.debug("Obteniendo avatar para animal: {}", id);
+
+    final var animalEntity = animalRepository.findById(id).orElseThrow(() ->
+        new ResourceNotFoundException("Animal con id " + id + " no encontrado"));
+
+    final Path avatarPath = getAvatarPath(animalEntity, id);
+    if (isNull(avatarPath)) {
+      return null;
+    }
+
+    return new FileSystemResource(avatarPath);
+  }
+
   public void deleteFile(Integer fileId) throws IOException {
     log.debug("Eliminando documento: {}", fileId);
 
@@ -104,4 +150,51 @@ public class FileService {
     documentoRepository.delete(documento);
   }
 
+  public void deleteAvatar(Integer id) throws IOException {
+    log.debug("Eliminando avatar para animal: {}", id);
+
+    final var animalEntity = animalRepository.findById(id).orElseThrow(() ->
+        new ResourceNotFoundException("Animal con id " + id + " no encontrado"));
+
+    final Path avatarPath = getAvatarPath(animalEntity, id);
+    if (isNull(avatarPath)) {
+      return;
+    }
+
+    if (Files.exists(avatarPath)) {
+      Files.delete(avatarPath);
+      log.debug("Avatar eliminado: {}", avatarPath);
+    } else {
+      log.warn("Archivo de avatar no encontrado para eliminar: {}", avatarPath);
+      return;
+    }
+
+    animalEntity.setAvatar(false);
+    animalRepository.save(animalEntity);
+  }
+
+  private Path getAvatarPath(Animal animalEntity, Integer id) {
+
+    if ( isNull(animalEntity.getAvatar()) || !animalEntity.getAvatar()) {
+      log.error("El animal con id {} no tiene avatar", id);
+    }
+
+    Path uploadPath = Paths.get(uploadDir + "/" + id);
+    if (!Files.exists(uploadPath)) {
+      log.error("Directorio de avatar no encontrado para el animal con id: {}", id);
+      return null;
+    }
+
+    Path avatarPath = uploadPath.resolve(avatarFilename(id));
+    if (!Files.exists(avatarPath)) {
+      log.error("Archivo de avatar no encontrado para el animal con id: {}", id);
+      return null;
+    }
+
+    return avatarPath;
+  }
+
+  private String avatarFilename(Integer id) {
+    return String.format(AVATAR_FILE, id);
+  }
 }
