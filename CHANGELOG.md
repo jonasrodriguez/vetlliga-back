@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.8.0] - 2026-07-09
+### Added
+- Avatar logic and controllers
+
+---
+
+## [1.7.0] - 2026-07-03
+### Changed
+- Simplified animal filtering criteria
+
+---
+
 ## [1.6.0] - 2025-10-05
 ### Changed
 - Remove "api" from controllers
