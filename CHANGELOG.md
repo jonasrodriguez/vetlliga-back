@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.8.1] - 2026-07-15
+### Changed
+- Desparasitacion filter now shows animals pending to desparasitacion
+
+---
+
 ## [1.8.0] - 2026-07-09
 ### Added
 - Avatar logic and controllers

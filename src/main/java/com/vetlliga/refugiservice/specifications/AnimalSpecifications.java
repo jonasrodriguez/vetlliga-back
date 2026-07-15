@@ -131,13 +131,13 @@ public class AnimalSpecifications {
     }
   }
 
-  private static void addUltimaDesparasitacion(LocalDate ultimaDesparasitacion,
+  private static void addUltimaDesparasitacion(LocalDate fechaSeleccionada,
       TipoDesparasitacion tipo,
       Root<Animal> root,
       CriteriaQuery<?> query, CriteriaBuilder builder,
       List<Predicate> predicates) {
 
-    if (nonNull(ultimaDesparasitacion)) {
+    if (nonNull(fechaSeleccionada)) {
       Subquery<LocalDate> subquery = query.subquery(LocalDate.class);
       Root<Desparasitacion> subRoot = subquery.from(Desparasitacion.class);
 
@@ -147,7 +147,15 @@ public class AnimalSpecifications {
       subquery.select(builder.greatest(subRoot.<LocalDate>get("fecha")))
           .where(builder.and(animalMatch, tipoInterno));
 
-      predicates.add(builder.greaterThanOrEqualTo(subquery, ultimaDesparasitacion));
+      // La próxima desparasitación toca 3 meses después de la última.
+      // No se puede modificar el valor fecha en la subquery, asi que corremos la fecha limite 3 meses
+      // Incluye también animales ya vencidos (próxima fecha < hoy)
+      LocalDate fechaLimite = fechaSeleccionada.minusMonths(3);
+
+      Predicate tocaDesparasitar = builder.greaterThanOrEqualTo(subquery, fechaLimite);
+      Predicate nuncaDesparasitado = builder.isNull(subquery);
+
+      predicates.add(builder.or(tocaDesparasitar, nuncaDesparasitado));
     }
   }
 
