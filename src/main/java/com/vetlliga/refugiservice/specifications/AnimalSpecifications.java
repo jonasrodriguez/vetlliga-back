@@ -152,7 +152,7 @@ public class AnimalSpecifications {
       // Incluye también animales ya vencidos (próxima fecha < hoy)
       LocalDate fechaLimite = fechaSeleccionada.minusMonths(3);
 
-      Predicate tocaDesparasitar = builder.greaterThanOrEqualTo(subquery, fechaLimite);
+      Predicate tocaDesparasitar = builder.lessThanOrEqualTo(subquery, fechaLimite);
       Predicate nuncaDesparasitado = builder.isNull(subquery);
 
       predicates.add(builder.or(tocaDesparasitar, nuncaDesparasitado));
