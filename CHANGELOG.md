@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.0] - 2026-09-09
+### Added
+- New Recordatorios endpoint
+
+---
+
 ## [1.8.2] - 2026-07-16
 ### Fix
 - Desparasitacion filter logic was inverted
