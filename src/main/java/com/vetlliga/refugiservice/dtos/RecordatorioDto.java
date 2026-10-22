@@ -15,7 +15,7 @@ public class RecordatorioDto {
   private int id;
   private TipoAnimal tipo;
   private String nombre;
-  private String numeroRegistro;
+  private Float peso;
   private TipoDesparasitacion tipoDesparasitacion;
   private LocalDate fechaDesparasitacion;
 }
