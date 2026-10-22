@@ -33,10 +33,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
  * <p>Semantics under test:
  *
  * <ul>
- *   <li><b>Deworming</b> (interna/externa): due when {@code MAX(fecha of tipo) <= selected - 3mo},
- *       OR never dewormed for that tipo. Uses the LATEST deworming of the tipo.
- *   <li><b>Vacuna / Test</b>: {@code MAX(fecha) >= selected}, and never-vaccinated/tested are
- *       EXCLUDED (no null branch) — the opposite direction from deworming. Flagged intentionally.
+ *   <li><b>Deworming</b> (interna/externa): included when the LATEST deworming of that tipo is on
+ *       or after the selected date ({@code MAX(fecha of tipo) >= selected}). Never-dewormed animals
+ *       are EXCLUDED. Same semantics as vacuna/test, but scoped per deworming tipo.
+ *   <li><b>Vacuna / Test</b>: {@code MAX(fecha) >= selected}; never-vaccinated/tested are EXCLUDED.
  *   <li>Every query also carries the always-on {@code activo = true} predicate.
  * </ul>
  */
@@ -46,92 +46,106 @@ class AnimalSpecificationsTest {
   @Autowired private TestEntityManager em;
   @Autowired private AnimalRepository animalRepository;
 
-  // Fixed reference date so tests are deterministic.
+  // Fixed reference date so tests are deterministic. It is used directly as the selected filter date.
   private static final LocalDate HOY = LocalDate.of(2024, 6, 15);
-  private static final LocalDate LIMITE_DESP = HOY.minusMonths(3); // 2024-03-15: last deworming must be <= this
 
   // ===================== DEWORMING — INTERNA =====================
 
   @Test
-  void interna_includesDueNeverAndOnlyExterna_excludesRecentMaxAndInactive() {
-    Animal dueOld = withDeworming("dueOld", INTERNA, LocalDate.of(2024, 1, 1)); // before limit -> due
-    Animal never = animal("never"); // no deworming -> due
-    Animal onlyExterna = withDeworming("onlyExterna", EXTERNA, LocalDate.of(2024, 6, 1)); // never interna -> due
+  void desp_interna_includesOnOrAfterSelected_excludesBeforeAndNever() {
+    Animal onDate = withDeworming("onDate", INTERNA, HOY); // == selected -> included (>=)
+    Animal after = withDeworming("after", INTERNA, HOY.plusDays(10)); // included
+    Animal latestAfter = animal("latestAfter"); // old + recent, MAX >= selected -> included
+    deworm(latestAfter, INTERNA, HOY.minusMonths(2));
+    deworm(latestAfter, INTERNA, HOY.plusDays(1));
 
-    withDeworming("recent", INTERNA, LocalDate.of(2024, 6, 1)); // after limit -> NOT due
-    Animal maxRecent = animal("maxRecent"); // MAX(fecha) is the recent one -> NOT due
-    deworm(maxRecent, INTERNA, LocalDate.of(2023, 12, 1));
-    deworm(maxRecent, INTERNA, LocalDate.of(2024, 6, 1));
-    Animal inactiveDue = withDeworming("inactiveDue", INTERNA, LocalDate.of(2024, 1, 1)); // due but inactive
-    inactiveDue.setActivo(false);
+    withDeworming("before", INTERNA, HOY.minusDays(1)); // latest before selected -> excluded
+    animal("never"); // no deworming -> excluded (NULL >= fecha is false)
+    withDeworming("onlyExterna", EXTERNA, HOY.plusDays(1)); // no interna record -> excluded
+    Animal inactiveAfter = withDeworming("inactiveAfter", INTERNA, HOY.plusDays(1));
+    inactiveAfter.setActivo(false); // matches date but inactive -> excluded
 
     assertThat(ids(internaOn(HOY)))
-        .containsExactlyInAnyOrder(dueOld.getId(), never.getId(), onlyExterna.getId());
+        .containsExactlyInAnyOrder(onDate.getId(), after.getId(), latestAfter.getId());
   }
 
   @Test
-  void interna_boundaryIsInclusiveOnTheLimit() {
-    Animal before = withDeworming("before", INTERNA, LIMITE_DESP.minusDays(1)); // due
-    Animal onLimit = withDeworming("onLimit", INTERNA, LIMITE_DESP); // due (<= is inclusive)
-    withDeworming("after", INTERNA, LIMITE_DESP.plusDays(1)); // not due
+  void desp_interna_boundaryIsInclusiveOnSelectedDate() {
+    Animal onDate = withDeworming("onDate", INTERNA, HOY); // == selected -> included (>= inclusive)
+    withDeworming("dayBefore", INTERNA, HOY.minusDays(1)); // excluded
 
-    assertThat(ids(internaOn(HOY))).containsExactlyInAnyOrder(before.getId(), onLimit.getId());
+    assertThat(ids(internaOn(HOY))).containsExactly(onDate.getId());
   }
 
   @Test
-  void interna_usesLatestDeworming() {
-    Animal allOld = animal("allOld"); // MAX = 2024-02-01 -> due
-    deworm(allOld, INTERNA, LocalDate.of(2023, 12, 1));
-    deworm(allOld, INTERNA, LocalDate.of(2024, 2, 1));
+  void desp_interna_usesLatestDeworming() {
+    // Latest record decides: an old + a recent record is included because MAX >= selected;
+    // several records all before the selected date are excluded.
+    Animal latestQualifies = animal("latestQualifies");
+    deworm(latestQualifies, INTERNA, LocalDate.of(2024, 3, 1)); // before
+    deworm(latestQualifies, INTERNA, HOY.plusDays(1)); // after -> MAX qualifies
 
-    Animal latestRecent = animal("latestRecent"); // MAX = 2024-06-01 -> not due
-    deworm(latestRecent, INTERNA, LocalDate.of(2024, 1, 1));
-    deworm(latestRecent, INTERNA, LocalDate.of(2024, 6, 1));
+    Animal allBefore = animal("allBefore");
+    deworm(allBefore, INTERNA, LocalDate.of(2024, 5, 1));
+    deworm(allBefore, INTERNA, LocalDate.of(2024, 6, 1)); // MAX still before selected
 
-    assertThat(ids(internaOn(HOY))).containsExactly(allOld.getId());
+    assertThat(ids(internaOn(HOY))).containsExactly(latestQualifies.getId());
   }
 
   @Test
-  void interna_ignoresExternaHistory() {
-    // Interna due, but externa was done yesterday: filtering interna must still include it.
-    Animal a = withDeworming("a", INTERNA, LocalDate.of(2024, 1, 1));
-    deworm(a, EXTERNA, HOY.minusDays(1));
+  void desp_interna_ignoresExternaHistory() {
+    // Filtering interna only looks at interna records: a recent externa does not qualify an animal
+    // whose interna is absent, and an animal with a qualifying interna is included.
+    Animal internaRecent = withDeworming("internaRecent", INTERNA, HOY);
+    withDeworming("externaOnlyRecent", EXTERNA, HOY.plusDays(1)); // no interna -> excluded
 
-    assertThat(ids(internaOn(HOY))).containsExactly(a.getId());
+    assertThat(ids(internaOn(HOY))).containsExactly(internaRecent.getId());
   }
 
   // ===================== DEWORMING — EXTERNA =====================
 
   @Test
-  void externa_includesDueAndNever_excludesRecent() {
-    Animal dueOld = withDeworming("dueOld", EXTERNA, LocalDate.of(2024, 1, 1)); // due
-    Animal never = animal("never"); // never externa -> due
-    Animal onlyInterna = withDeworming("onlyInterna", INTERNA, LocalDate.of(2024, 1, 1)); // never externa -> due
-    withDeworming("recent", EXTERNA, LocalDate.of(2024, 6, 1)); // not due
+  void desp_externa_includesOnOrAfterSelected_excludesBeforeAndNever() {
+    Animal onDate = withDeworming("onDate", EXTERNA, HOY); // included
+    Animal after = withDeworming("after", EXTERNA, HOY.plusDays(10)); // included
 
-    assertThat(ids(externaOn(HOY)))
-        .containsExactlyInAnyOrder(dueOld.getId(), never.getId(), onlyInterna.getId());
+    withDeworming("before", EXTERNA, HOY.minusDays(1)); // excluded
+    animal("never"); // excluded
+    withDeworming("onlyInterna", INTERNA, HOY.plusDays(1)); // no externa record -> excluded
+
+    assertThat(ids(externaOn(HOY))).containsExactlyInAnyOrder(onDate.getId(), after.getId());
+  }
+
+  @Test
+  void desp_externa_dewormedShortlyAfterFilterDate_appears() {
+    // Reported case: filtering externa on Jul 13 must return a dog last dewormed externally on Jul 17.
+    Animal perro = withDeworming("Firulais", EXTERNA, LocalDate.of(2024, 7, 17));
+
+    ListadoAnimalesCriteria c = new ListadoAnimalesCriteria();
+    c.setDesparasitoExterna(LocalDate.of(2024, 7, 13));
+
+    assertThat(ids(c)).containsExactly(perro.getId());
   }
 
   // ===================== DEWORMING — COMBINED =====================
 
   @Test
-  void combined_internaAndExterna_bothMustBeDue() {
-    Animal bothDue = animal("bothDue");
-    deworm(bothDue, INTERNA, LocalDate.of(2024, 1, 1));
-    deworm(bothDue, EXTERNA, LocalDate.of(2024, 1, 1));
+  void desp_combined_internaAndExterna_bothMustMatch() {
+    Animal bothMatch = animal("bothMatch");
+    deworm(bothMatch, INTERNA, HOY);
+    deworm(bothMatch, EXTERNA, HOY.plusDays(2)); // both >= selected -> included
 
-    Animal internaDueExternaRecent = animal("internaDueExternaRecent");
-    deworm(internaDueExternaRecent, INTERNA, LocalDate.of(2024, 1, 1)); // due
-    deworm(internaDueExternaRecent, EXTERNA, LocalDate.of(2024, 6, 1)); // not due -> whole animal excluded
+    Animal internaMatchExternaBefore = animal("internaMatchExternaBefore");
+    deworm(internaMatchExternaBefore, INTERNA, HOY); // matches
+    deworm(internaMatchExternaBefore, EXTERNA, HOY.minusDays(1)); // externa fails -> excluded
 
-    Animal bothNever = animal("bothNever"); // null for both -> due on both
+    animal("neither"); // no dewormings -> excluded on both
 
     ListadoAnimalesCriteria c = new ListadoAnimalesCriteria();
     c.setDesparasitoInterna(HOY);
     c.setDesparasitoExterna(HOY);
 
-    assertThat(ids(c)).containsExactlyInAnyOrder(bothDue.getId(), bothNever.getId());
+    assertThat(ids(c)).containsExactly(bothMatch.getId());
   }
 
   // ===================== VACUNA (>= selected, excludes never) =====================
